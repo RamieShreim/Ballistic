@@ -3,14 +3,16 @@
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=1]
 
 [node name="Scene" type="Node2D"]
+position = Vector2( -0.663422, 4.64394 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 475, 175 )
+position = Vector2( 481.634, 352.797 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 475, 175 )
+position = Vector2( 483.624, 315.645 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="StaticBody2D"]
+position = Vector2( -5.30731, 219.592 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( -315, 125, 305, 125, 95, 315, -105, 315 )
