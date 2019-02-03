@@ -3,14 +3,17 @@ extends RigidBody2D
 enum {U, D, L, R, UL, UR, DL, DR}
 var dir: int = D
 
+var damage: int = 0
+
 var dash_cd: bool = false
 var dash_cd_value: float = 100
 var cd_bar_hue_init: int
 
-const DASH_SPEED: int = 60000
+const DASH_SPEED: int = 32000
 
 const parts_dash = preload("res://Instances/Particles/PartsDash.tscn")
 
+onready var spr = $Sprite
 onready var cd_bar = $DashCD
 
 func _ready():
@@ -18,9 +21,18 @@ func _ready():
 
 
 func _process(delta):
+	# Handle dash meter
 	dash_cd_value = max(dash_cd_value - 1.7 * delta * 60, 0)
 	cd_bar.set_value(dash_cd_value)
-	cd_bar.tint_progress.h = max(cd_bar.tint_progress.h - 0.21 * delta, 0)
+	cd_bar.tint_progress.h = max(cd_bar.tint_progress.h - 0.28 * delta, 0)
+
+
+func _physics_process(delta):
+	# Bounce animation
+	if len(get_colliding_bodies()) > 0:
+		spr.set_scale(Vector2(1, 0.5))
+		
+	spr.scale.y = min(spr.scale.y + 1 * delta, 1)
 	
 	if Input.is_action_pressed("ui_up"):
 		dir = U
@@ -35,6 +47,7 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("ui_accept") and not dash_cd:
 		dash(delta)
+
 
 
 func dash(delta):
