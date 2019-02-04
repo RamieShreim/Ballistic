@@ -18,11 +18,9 @@ current = true
 
 [node name="Player2" parent="Node2D/Camera2D" instance=ExtResource( 1 )]
 position = Vector2( 116.046, 74.14 )
-gravity_scale = 7.5
 
 [node name="Player" parent="Node2D/Camera2D" instance=ExtResource( 1 )]
 position = Vector2( -143.525, 74.9345 )
-gravity_scale = 7.5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 517.834, 319.718 )
