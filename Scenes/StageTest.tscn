@@ -28,7 +28,7 @@ position = Vector2( 669.645, 290.791 )
 
 [node name="Platform1" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 861.769, 138.864 )
+position = Vector2( 980.716, 164.128 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
 position = Vector2( 77.9482, 17.9824 )
@@ -46,7 +46,7 @@ __meta__ = {
 
 [node name="Platform2" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( -67.7486, 155.606 )
+position = Vector2( 980.673, 245.079 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform2"]
 position = Vector2( 85.8055, 12.3766 )
