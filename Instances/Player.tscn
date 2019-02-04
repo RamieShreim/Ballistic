@@ -15,7 +15,6 @@ bounce = 0.95
 radius = 31.3201
 
 [node name="Player" type="RigidBody2D"]
-editor/display_folded = true
 mode = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 7.5

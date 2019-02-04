@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
+[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/movingplatform1.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 67.6183, 10 )
+
+[node name="Scene" type="Node2D"]
+position = Vector2( 2.17847, 0.268913 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 122.547, -29.6512 )
+anchor_mode = 0
+current = true
+process_mode = 0
+editor_draw_drag_margin = true
+script = ExtResource( 1 )
+tracking_list = [ NodePath("../Player"), NodePath("../Player2") ]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 532.635, 263.498 )
+
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 662.002, 270.132 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 517.834, 319.718 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 567.538, -98.6897 )
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2( -0.663513, 2.65372 )
+polygon = PoolVector2Array( -73.4441, -11.8243, 68.2102, -11.6483, 68.2102, 8.35168, -71.7898, 8.35168 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 563.872, -43.5334 )
+shape = SubResource( 1 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="StaticBody2D/CollisionShape2D2"]
+position = Vector2( 8.8136, 3.03326 )
+polygon = PoolVector2Array( -73.4441, -11.8243, 68.2102, -11.6483, 68.2102, 8.35168, -71.7898, 8.35168 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RigidBody2D" type="RigidBody2D" parent="StaticBody2D"]
+position = Vector2( -5.30731, 219.592 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+modulate = Color( 0.278431, 0.819608, 0.74902, 1 )
+polygon = PoolVector2Array( -311.747, 125.253, 305, 125, 257.039, 219.711, -262.961, 219.711 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 305.027, 124.952, -315, 125, -261.351, 221.964, 254.558, 222.991 )
+
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
+
