@@ -7,6 +7,7 @@ position = Vector2( -0.663422, 4.64394 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 481.634, 352.797 )
+gravity_scale = 7.5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 483.624, 315.645 )
