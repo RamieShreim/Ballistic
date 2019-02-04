@@ -1,51 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/movingplatform1.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 67.6183, 10 )
 
 [node name="Scene" type="Node2D"]
-position = Vector2( 2.17847, 0.268913 )
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 508.98, 351.389 )
-
-[node name="Camera2D" type="Camera2D" parent="Node2D"]
-position = Vector2( -5.30978, -77.2446 )
-current = true
-
-[node name="Player2" parent="Node2D/Camera2D" instance=ExtResource( 1 )]
-position = Vector2( 116.046, 74.14 )
-gravity_scale = 7.5
-
-[node name="Player" parent="Node2D/Camera2D" instance=ExtResource( 1 )]
-position = Vector2( -143.525, 74.9345 )
-gravity_scale = 7.5
+position = Vector2( 1.5537, 6.98486 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 517.834, 319.718 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-editor/display_folded = true
-position = Vector2( -241.171, -108.641 )
-shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D"]
-polygon = PoolVector2Array( -73.4441, -11.8243, 68.2102, -11.6483, 68.2102, 8.35168, -71.7898, 8.35168 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-editor/display_folded = true
-position = Vector2( 219.557, -117.173 )
-shape = SubResource( 1 )
-
-[node name="Polygon2D2" type="Polygon2D" parent="StaticBody2D/CollisionShape2D2"]
-position = Vector2( -1.1377, 1.70642 )
-polygon = PoolVector2Array( -73.4441, -11.8243, 68.2102, -11.6483, 68.2102, 8.35168, -71.7898, 8.35168 )
+position = Vector2( 498.19, 307.441 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="StaticBody2D"]
-position = Vector2( -5.30731, 219.592 )
+position = Vector2( -4.07959, 195.037 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 modulate = Color( 0.278431, 0.819608, 0.74902, 1 )
@@ -53,4 +22,49 @@ polygon = PoolVector2Array( -311.747, 125.253, 305, 125, 257.039, 219.711, -262.
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 305.027, 124.952, -315, 125, -261.351, 221.964, 254.558, 222.991 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 669.645, 290.791 )
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 861.769, 138.864 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+position = Vector2( 77.9482, 17.9824 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="Platform1/CollisionShape2D"]
+position = Vector2( 8.57889, 3.10528 )
+polygon = PoolVector2Array( -73.4441, -11.8243, 68.2102, -11.6483, 68.2102, 8.35168, -71.7898, 8.35168 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( -67.7486, 155.606 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform2"]
+position = Vector2( 85.8055, 12.3766 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Polygon2D2" type="Polygon2D" parent="Platform2/CollisionShape2D2"]
+position = Vector2( 2.95074, 3.64638 )
+polygon = PoolVector2Array( -73.4441, -11.8243, 68.2102, -11.6483, 68.2102, 8.35168, -71.7898, 8.35168 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 271.524, 185.762 )
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 229.259, 168.056 )
 

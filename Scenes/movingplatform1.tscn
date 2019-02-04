@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Moving Horizontal"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/StaticBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 57 ), Vector2( 500, 57 ), Vector2( 0, 57 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+
+extents = Vector2( 91.6506, 14.9498 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 305.9, 191.9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Moving Horizontal"
+"anims/Moving Horizontal" = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimationPlayer"]
+position = Vector2( 166.75, 189.05 )
+
+[node name="Polygon2D" type="Polygon2D" parent="AnimationPlayer/StaticBody2D"]
+polygon = PoolVector2Array( 241.751, 151.3, 370, 150, 370, 180, 190, 180, 190, 150 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimationPlayer/StaticBody2D"]
+position = Vector2( 277.4, 167.2 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
