@@ -13,26 +13,28 @@ extents = Vector2( 67.6183, 10 )
 position = Vector2( 2.17847, 0.268913 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 30.6608, 107.811 )
+position = Vector2( 95.6608, 107.811 )
 anchor_mode = 0
 current = true
 process_mode = 0
+limit_left = -400
+limit_top = -200
+limit_right = 1400
+limit_bottom = 800
 editor_draw_drag_margin = true
 script = ExtResource( 1 )
 tracking_list = [ NodePath("../Player"), NodePath("../Player2") ]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 566.013, 392.402 )
+position = Vector2( 567.643, 397.292 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 478.502, 395.138 )
+position = Vector2( 642.619, 398.922 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 517.834, 319.718 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-editor/display_folded = true
-visible = false
 position = Vector2( 1039.54, -296.777 )
 shape = SubResource( 1 )
 
