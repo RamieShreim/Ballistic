@@ -5,8 +5,8 @@
 [ext_resource path="res://Sprites/woodstage.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/woodstage-export.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/movingplatform1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=6]
+[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -79,15 +79,6 @@ __meta__ = {
 
 [node name="Node2D" parent="." instance=ExtResource( 5 )]
 
-[node name="BannerControl" parent="." instance=ExtResource( 6 )]
-anchor_left = 0.35
-anchor_right = 0.56
-anchor_bottom = 0.4
-margin_left = 165.437
-margin_top = 482.02
-margin_right = 865.437
-margin_bottom = 582.02
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 30.5907, 107.811 )
 anchor_mode = 0
@@ -98,6 +89,17 @@ limit_top = -200
 limit_right = 1400
 limit_bottom = 600
 editor_draw_drag_margin = true
-script = ExtResource( 7 )
+script = ExtResource( 6 )
 tracking_list = [ NodePath("../Player"), NodePath("../Player2") ]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_left = 0.35
+anchor_right = 0.56
+anchor_bottom = 0.4
+margin_left = -116.0
+margin_top = 420.0
+margin_right = 584.0
+margin_bottom = 520.0
 
