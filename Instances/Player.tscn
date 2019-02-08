@@ -14,7 +14,9 @@ bounce = 0.95
 
 radius = 31.3201
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=[
+"Player",
+]]
 mode = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 7.5
@@ -52,4 +54,5 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 [connection signal="timeout" from="TimerDash" to="." method="_on_TimerDash_timeout"]
