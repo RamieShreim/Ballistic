@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+export(bool) var player_two = false
+var temp_add: String = ""
+
 enum {U, D, L, R, UL, UR, DL, DR}
 var dir: int = D
 
@@ -15,9 +18,11 @@ const parts_dash = preload("res://Instances/Particles/PartsDash.tscn")
 
 onready var spr = $Sprite
 onready var cd_bar = $DashCD
+onready var camera = get_tree().get_root().get_node("Scene").get_node("Camera2D")
 
 func _ready():
 	cd_bar_hue_init = cd_bar.tint_progress.h
+	temp_add = "2" if player_two else ""
 
 
 func _process(delta):
@@ -25,6 +30,10 @@ func _process(delta):
 	dash_cd_value = max(dash_cd_value - 1.7 * delta * 60, 0)
 	cd_bar.set_value(dash_cd_value)
 	cd_bar.tint_progress.h = max(cd_bar.tint_progress.h - 0.28 * delta, 0)
+	
+	if get_position().x < camera.limit_left or get_position().x > camera.limit_right or get_position().y < camera.limit_top or get_position().y > camera.limit_bottom:
+		linear_velocity = Vector2.ZERO
+		set_position(Vector2(520, 100))
 
 
 func _physics_process(delta):
@@ -34,18 +43,38 @@ func _physics_process(delta):
 		
 	spr.scale.y = min(spr.scale.y + 1 * delta, 1)
 	
-	if Input.is_action_pressed("ui_up"):
-		dir = U
-	elif Input.is_action_pressed("ui_down"):
-		dir = D
-	elif Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_up" + temp_add):
+		if Input.is_action_pressed("ui_left" + temp_add):
+			dir = UL
+		elif Input.is_action_pressed("ui_right" + temp_add):
+			dir = UR
+		else:
+			dir = U
+	elif Input.is_action_pressed("ui_down" + temp_add):
+		if Input.is_action_pressed("ui_left" + temp_add):
+			dir = DL
+		elif Input.is_action_pressed("ui_right" + temp_add):
+			dir = DR
+		else:
+			dir = D
+	elif Input.is_action_pressed("ui_left" + temp_add):
 		apply_impulse(get_position(), Vector2(-500 * delta, 0))
-		dir = L
-	elif Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_up" + temp_add):
+			dir = UL
+		elif Input.is_action_pressed("ui_down" + temp_add):
+			dir = DL
+		else:
+			dir = L
+	elif Input.is_action_pressed("ui_right" + temp_add):
 		apply_impulse(get_position(), Vector2(500 * delta, 0))
-		dir = R
+		if Input.is_action_pressed("ui_up" + temp_add):
+			dir = UR
+		elif Input.is_action_pressed("ui_down" + temp_add):
+			dir = DR
+		else:
+			dir = R
 		
-	if Input.is_action_just_pressed("ui_accept") and not dash_cd:
+	if Input.is_action_just_pressed("ui_accept" + temp_add) and not dash_cd:
 		dash(delta)
 
 
@@ -65,6 +94,15 @@ func dash(delta):
 			apply_impulse(get_position(), Vector2(-DASH_SPEED * delta, 0))
 		R:
 			apply_impulse(get_position(), Vector2(DASH_SPEED * delta, 0))
+		UL:
+			apply_impulse(get_position(), Vector2(-DASH_SPEED * delta, -DASH_SPEED * delta) / 1.25)
+		UR:
+			apply_impulse(get_position(), Vector2(DASH_SPEED * delta, -DASH_SPEED * delta) / 1.25)
+		DL:
+			apply_impulse(get_position(), Vector2(-DASH_SPEED * delta, DASH_SPEED * delta) / 1.25)
+		DR:
+			apply_impulse(get_position(), Vector2(DASH_SPEED * delta, DASH_SPEED * delta) / 1.25)
+			
 	dash_cd = true
 	dash_cd_value = 100
 	cd_bar.tint_progress = Color(0.4, 1, 0)
@@ -75,3 +113,11 @@ func dash(delta):
 func _on_TimerDash_timeout():
 	cd_bar.hide()
 	dash_cd = false
+
+
+func _on_Player_body_entered(body):
+	if dash_cd and body.is_in_group("Player"):
+		if linear_velocity > body.linear_velocity:
+			body.damage += 10
+		elif linear_velocity < body.linear_velocity:
+			damage += 10

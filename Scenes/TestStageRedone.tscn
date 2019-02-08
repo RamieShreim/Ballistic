@@ -28,7 +28,9 @@ __meta__ = {
 position = Vector2( 286.728, 394.738 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0, 1, 0.109804, 1 )
 position = Vector2( 729.199, 398.989 )
+player_two = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 517.834, 319.718 )
@@ -77,7 +79,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Node2D" parent="." instance=ExtResource( 5 )]
+[node name="Platform" parent="." instance=ExtResource( 5 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 30.5907, 107.811 )
@@ -88,6 +90,8 @@ limit_left = -400
 limit_top = -200
 limit_right = 1400
 limit_bottom = 600
+limit_smoothed = true
+smoothing_enabled = true
 editor_draw_drag_margin = true
 script = ExtResource( 6 )
 tracking_list = [ NodePath("../Player"), NodePath("../Player2") ]
