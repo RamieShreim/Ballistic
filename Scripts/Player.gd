@@ -140,10 +140,15 @@ func _on_TimerDash_timeout():
 
 func _on_Player_body_entered(body):
 	if dash_cd and body.is_in_group("Player"):
-		if linear_velocity > body.linear_velocity:
-			body.damage += 10
-		elif linear_velocity < body.linear_velocity:
-			damage += 10
+		var magnitude = sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2))
+		print(magnitude)
+		if not body.dash_cd:
+			body.damage += int(magnitude / 20)
+		else:
+			if linear_velocity > body.linear_velocity:
+				body.damage += 10
+			elif linear_velocity < body.linear_velocity:
+				damage += 10
 
 
 func _on_TimerRespawn_timeout():
