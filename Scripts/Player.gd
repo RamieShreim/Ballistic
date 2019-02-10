@@ -3,6 +3,9 @@ extends RigidBody2D
 export(bool) var player_two = false
 var temp_add: String = ""
 
+var control: bool = true
+var dead: bool = false
+
 enum {U, D, L, R, UL, UR, DL, DR}
 var dir: int = D
 
@@ -20,6 +23,7 @@ onready var spr = $Sprite
 onready var cd_bar = $DashCD
 onready var camera = get_tree().get_root().get_node("Scene").get_node("Camera2D")
 
+
 func _ready():
 	cd_bar_hue_init = cd_bar.tint_progress.h
 	temp_add = "2" if player_two else ""
@@ -31,9 +35,21 @@ func _process(delta):
 	cd_bar.set_value(dash_cd_value)
 	cd_bar.tint_progress.h = max(cd_bar.tint_progress.h - 0.28 * delta, 0)
 	
-	if get_position().x < camera.limit_left or get_position().x > camera.limit_right or get_position().y < camera.limit_top or get_position().y > camera.limit_bottom:
+	if get_position().x < camera.limit_left or get_position().x > camera.limit_right or get_position().y < camera.limit_top or get_position().y > camera.limit_bottom and not dead:
 		linear_velocity = Vector2.ZERO
-		set_position(Vector2(520, 100))
+		dead = true
+		control = false
+		$Sprite.modulate.a = 0
+		if get_position().x < camera.limit_left:
+			$PartsDie.set_rotation_degrees(0)
+		elif get_position().x > camera.limit_right:
+			$PartsDie.set_rotation_degrees(180)
+		elif get_position().y < camera.limit_top:
+			$PartsDie.set_rotation_degrees(90)
+		elif get_position().y > camera.limit_bottom:
+			$PartsDie.set_rotation_degrees(270)
+		$PartsDie.set_emitting(true)
+		$TimerRespawn.start()
 
 
 func _physics_process(delta):
@@ -43,6 +59,14 @@ func _physics_process(delta):
 		
 	spr.scale.y = min(spr.scale.y + 1 * delta, 1)
 	
+	if control:
+		input(delta)
+	
+	if dead:
+		linear_velocity = Vector2.ZERO
+
+
+func input(delta):
 	if Input.is_action_pressed("ui_up" + temp_add):
 		if Input.is_action_pressed("ui_left" + temp_add):
 			dir = UL
@@ -76,7 +100,6 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("ui_accept" + temp_add) and not dash_cd:
 		dash(delta)
-
 
 
 func dash(delta):
@@ -121,3 +144,11 @@ func _on_Player_body_entered(body):
 			body.damage += 10
 		elif linear_velocity < body.linear_velocity:
 			damage += 10
+
+
+func _on_TimerRespawn_timeout():
+	set_position(Vector2(520, 100))
+	$Sprite.modulate.a = 1
+	damage = 0
+	dead = false
+	control = true
