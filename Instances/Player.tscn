@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Ball.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Dash bar back.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Dash bar front 2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Hit effect.png" type="Texture" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -14,24 +15,42 @@ bounce = 0.95
 
 radius = 31.3201
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="CanvasItemMaterial" id=9]
+
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=8]
+
+emission_shape = 1
+emission_sphere_radius = 40.0
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+anim_speed = 1.0
+
+[sub_resource type="Curve" id=3]
 
 min_value = -1.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
+[sub_resource type="CurveTexture" id=4]
 
-curve = SubResource( 4 )
+curve = SubResource( 3 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=5]
 
 _data = [ Vector2( 0, 1 ), 0.0, -0.00930035, 0, 1, Vector2( 0.655896, 0.9939 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.88837, 0.0, 1, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
+[sub_resource type="CurveTexture" id=6]
 
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=7]
 
 flag_disable_z = true
 spread = 15.0
@@ -43,11 +62,11 @@ angular_velocity_random = 0.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 24.0
-scale_curve = SubResource( 7 )
+scale_curve = SubResource( 6 )
 color = Color( 1, 0, 0, 1 )
 hue_variation = 0.1
 hue_variation_random = 0.1
-hue_variation_curve = SubResource( 5 )
+hue_variation_curve = SubResource( 4 )
 
 [node name="Player" type="RigidBody2D" groups=[
 "Player",
@@ -86,13 +105,23 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="PartsHit" type="Particles2D" parent="."]
+material = SubResource( 9 )
+emitting = false
+amount = 3
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 8 )
+texture = ExtResource( 5 )
+
 [node name="PartsDie" type="Particles2D" parent="."]
 emitting = false
 amount = 24
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 3 )
+process_material = SubResource( 7 )
 
 [node name="TimerDash" type="Timer" parent="."]
 one_shot = true
