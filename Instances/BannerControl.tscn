@@ -10,7 +10,7 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 
-size = 70
+size = 60
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -22,10 +22,10 @@ margin_right = 840.0
 margin_bottom = 500.0
 
 [node name="PlayerOneControl" type="Control" parent="."]
-editor/display_folded = true
 margin_bottom = 100.0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerOneControl"]
+margin_top = 10.0
 margin_right = 100.0
 margin_bottom = 70.0
 texture = ExtResource( 1 )
@@ -41,7 +41,7 @@ text = "PLAYER ONE"
 
 [node name="Percentage" type="Label" parent="PlayerOneControl"]
 margin_left = 100.0
-margin_top = 10.0
+margin_top = 20.0
 margin_right = 235.0
 margin_bottom = 80.0
 custom_fonts/font = SubResource( 2 )
@@ -77,12 +77,12 @@ expand = true
 stretch_mode = 1
 
 [node name="PlayerTwoControl" type="Control" parent="."]
-editor/display_folded = true
 margin_left = 400.0
 margin_right = 1100.0
 margin_bottom = 100.0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerTwoControl"]
+margin_top = 10.0
 margin_right = 100.0
 margin_bottom = 70.0
 texture = ExtResource( 1 )
@@ -98,7 +98,7 @@ text = "PLAYER TWO"
 
 [node name="Percentage" type="Label" parent="PlayerTwoControl"]
 margin_left = 100.0
-margin_top = 10.0
+margin_top = 20.0
 margin_right = 235.0
 margin_bottom = 80.0
 custom_fonts/font = SubResource( 2 )
