@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/wood texture background.jpg" type="Texture" id=1]
-[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/woodstage.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/woodstage-export.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/movingplatform1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=6]
-[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/deathzone gradient.png" type="Texture" id=2]
+[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/woodstage.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/woodstage-export.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/movingplatform1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -24,10 +25,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player1" parent="." instance=ExtResource( 2 )]
+[node name="deathzone" type="Sprite" parent="."]
+position = Vector2( 395.332, 551.343 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2000, 100 )
+
+[node name="Player1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 286.728, 394.738 )
 
-[node name="Player2" parent="." instance=ExtResource( 2 )]
+[node name="Player2" parent="." instance=ExtResource( 3 )]
 modulate = Color( 0, 0.788235, 1, 1 )
 position = Vector2( 729.199, 398.989 )
 player_two = true
@@ -60,14 +67,14 @@ __meta__ = {
 modulate = Color( 0, 0, 0, 0.262745 )
 position = Vector2( -1.61347, 385.851 )
 scale = Vector2( 1.00741, 1.00741 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Mainstage" type="Sprite" parent="StaticBody2D"]
 position = Vector2( -10.6329, 374.381 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -79,7 +86,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Platform" parent="." instance=ExtResource( 5 )]
+[node name="Platform" parent="." instance=ExtResource( 6 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 30.5907, 107.811 )
@@ -93,12 +100,12 @@ limit_bottom = 600
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_drag_margin = true
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 tracking_list = [ NodePath("../Player1"), NodePath("../Player2") ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 8 )]
 anchor_left = 0.35
 anchor_right = 0.56
 anchor_bottom = 0.4
