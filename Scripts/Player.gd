@@ -144,11 +144,14 @@ func _on_Player_body_entered(body):
 		print(magnitude)
 		if not body.dash_cd:
 			body.damage += int(magnitude / 20)
+			body.get_node("PartsHit").set_emitting(true)
 		else:
 			if linear_velocity > body.linear_velocity:
 				body.damage += 10
+				body.get_node("PartsHit").set_emitting(true)
 			elif linear_velocity < body.linear_velocity:
 				damage += 10
+				get_node("PartsHit").set_emitting(true)
 
 
 func _on_TimerRespawn_timeout():
