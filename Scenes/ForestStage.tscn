@@ -34,7 +34,23 @@ self_modulate = Color( 0.113725, 0.803922, 0.819608, 1 )
 position = Vector2( 729.199, 398.989 )
 player_two = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 30.5907, 107.811 )
+anchor_mode = 0
+current = true
+process_mode = 0
+limit_left = -500
+limit_top = -300
+limit_right = 1200
+limit_bottom = 700
+limit_smoothed = true
+smoothing_enabled = true
+editor_draw_drag_margin = true
+script = ExtResource( 3 )
+tracking_list = [ NodePath("../Player1"), NodePath("../Player2") ]
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 517.834, 319.718 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -71,21 +87,6 @@ shape = SubResource( 2 )
 position = Vector2( 95.1811, 17.06 )
 scale = Vector2( 1.00676, 0.980393 )
 polygon = PoolVector2Array( 6.42834, -1.6514, -195.026, -1.65143, -195.219, -33.0676, 6.81342, -32.8699 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 30.5907, 107.811 )
-anchor_mode = 0
-current = true
-process_mode = 0
-limit_left = -500
-limit_top = -300
-limit_right = 1400
-limit_bottom = 600
-limit_smoothed = true
-smoothing_enabled = true
-editor_draw_drag_margin = true
-script = ExtResource( 3 )
-tracking_list = [ NodePath("../Player1"), NodePath("../Player2") ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
