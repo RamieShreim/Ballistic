@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=2]
@@ -9,11 +9,120 @@
 
 extents = Vector2( 1920.18, 10 )
 
+[sub_resource type="Animation" id=2]
+
+resource_name = "Paddle left"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -100 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+
+extents = Vector2( 10, 40.9057 )
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "Paddle left"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -100 ), Vector2( 0, 5 ), Vector2( 0, -100 ) ]
+}
+
 [node name="Scene" type="Node2D"]
 position = Vector2( 2.17847, 0.268913 )
 
+[node name="background" type="ColorRect" parent="."]
+margin_left = -2489.85
+margin_top = -714.804
+margin_right = 2990.15
+margin_bottom = 2313.2
+color = Color( 0.0235294, 0.215686, 0.12549, 1 )
+
+[node name="midline1" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = 130.582
+margin_right = 519.097
+margin_bottom = 170.582
+
+[node name="midline2" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = 194.838
+margin_right = 519.097
+margin_bottom = 234.838
+
+[node name="midline3" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = 258.974
+margin_right = 519.097
+margin_bottom = 298.974
+
+[node name="midline4" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = 328.218
+margin_right = 519.097
+margin_bottom = 368.218
+
+[node name="midline5" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = 398.752
+margin_right = 519.097
+margin_bottom = 438.752
+
 [node name="Bottom RECT" type="StaticBody2D" parent="."]
 editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom RECT"]
 position = Vector2( 393.171, 452.513 )
@@ -27,6 +136,9 @@ margin_right = 2059.6
 margin_bottom = 819.586
 
 [node name="Top RECT" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top RECT"]
 position = Vector2( 314.309, 104.171 )
@@ -40,11 +152,11 @@ margin_right = 1964.44
 margin_bottom = 117.095
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 284.619, 371.008 )
+position = Vector2( 426.925, 392.051 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 modulate = Color( 0, 0.788235, 1, 1 )
-position = Vector2( 733.418, 380.005 )
+position = Vector2( 631.252, 375.601 )
 player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -52,9 +164,9 @@ position = Vector2( 30.5907, 107.811 )
 anchor_mode = 0
 current = true
 process_mode = 0
-limit_left = -400
+limit_left = 0
 limit_top = -200
-limit_right = 1400
+limit_right = 1000
 limit_bottom = 600
 limit_smoothed = true
 smoothing_enabled = true
@@ -73,44 +185,60 @@ margin_top = 429.296
 margin_right = 559.793
 margin_bottom = 529.296
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
-margin_left = 504.097
-margin_top = 130.582
-margin_right = 519.097
-margin_bottom = 170.582
+[node name="paddle left" type="RigidBody2D" parent="."]
+position = Vector2( 200, -97.239 )
+mode = 1
+gravity_scale = 0.0
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
-margin_left = 504.097
-margin_top = 194.838
-margin_right = 519.097
-margin_bottom = 234.838
+[node name="paddle left animation" type="AnimationPlayer" parent="paddle left"]
+autoplay = "Paddle left"
+playback_speed = 2.0
+"anims/Paddle left" = SubResource( 2 )
 
-[node name="ColorRect3" type="ColorRect" parent="."]
-modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
-margin_left = 504.097
-margin_top = 258.974
-margin_right = 519.097
-margin_bottom = 298.974
+[node name="paddle left collision" type="CollisionShape2D" parent="paddle left"]
+position = Vector2( 79.2401, 325.827 )
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="ColorRect4" type="ColorRect" parent="."]
-modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
-margin_left = 504.097
-margin_top = 328.218
-margin_right = 519.097
-margin_bottom = 368.218
+[node name="paddle left color" type="ColorRect" parent="paddle left"]
+margin_left = 69.9168
+margin_top = 284.915
+margin_right = 88.9168
+margin_bottom = 366.915
+color = Color( 0.215686, 0.784314, 0.372549, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="ColorRect5" type="ColorRect" parent="."]
-modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
-margin_left = 504.097
-margin_top = 398.752
-margin_right = 519.097
-margin_bottom = 438.752
+[node name="paddle right" type="RigidBody2D" parent="."]
+position = Vector2( -200, -61.267 )
+mode = 1
+gravity_scale = 0.0
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="paddle right animation" type="AnimationPlayer" parent="paddle right"]
+autoplay = "Paddle left"
+playback_speed = 2.0
+"anims/Paddle left" = SubResource( 4 )
+
+[node name="paddle right collision" type="CollisionShape2D" parent="paddle right"]
+position = Vector2( 940.885, 325.772 )
+shape = SubResource( 3 )
+
+[node name="paddle right color" type="ColorRect" parent="paddle right"]
+margin_left = 931.332
+margin_top = 284.915
+margin_right = 950.332
+margin_bottom = 366.915
+color = Color( 0.215686, 0.784314, 0.372549, 1 )
+
+[node name="scanlines" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.478431 )
 position = Vector2( 516.081, 209.329 )
 scale = Vector2( 1.79978, 1 )
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
