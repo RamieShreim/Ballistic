@@ -28,11 +28,7 @@ emission_shape = 1
 emission_sphere_radius = 42.0
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
-<<<<<<< HEAD
 angular_velocity = 81.8708
-=======
-angular_velocity = 1.0
->>>>>>> 7d3bb61edc4d45337ab25115c14f66e675c16cad
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 anim_speed = 1.0
