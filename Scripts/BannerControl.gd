@@ -7,7 +7,6 @@ var damage_2_prev: int = 0
 
 onready var player_1 = get_tree().get_root().get_node("Scene").get_node("Player1")
 onready var player_2 = get_tree().get_root().get_node("Scene").get_node("Player2")
-
 	
 onready var label_1 = $PlayerOneControl/Percentage
 onready var label_2 = $PlayerTwoControl/Percentage
