@@ -15,41 +15,42 @@ bounce = 0.95
 
 radius = 31.3201
 
-[sub_resource type="CanvasItemMaterial" id=8]
+[sub_resource type="CanvasItemMaterial" id=3]
 
 particles_animation = true
 particles_anim_h_frames = 6
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=4]
 
 emission_shape = 1
 emission_sphere_radius = 42.0
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 anim_speed = 1.0
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=5]
 
 min_value = -1.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=4]
-
-curve = SubResource( 3 )
-
-[sub_resource type="Curve" id=5]
-
-_data = [ Vector2( 0, 1 ), 0.0, -0.00930035, 0, 1, Vector2( 0.655896, 0.9939 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.88837, 0.0, 1, 0 ]
 
 [sub_resource type="CurveTexture" id=6]
 
 curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="Curve" id=7]
+
+_data = [ Vector2( 0, 1 ), 0.0, -0.00930035, 0, 1, Vector2( 0.655896, 0.9939 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.88837, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
 
 flag_disable_z = true
 spread = 15.0
@@ -61,11 +62,11 @@ angular_velocity_random = 0.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 24.0
-scale_curve = SubResource( 6 )
+scale_curve = SubResource( 8 )
 color = Color( 1, 0, 0, 1 )
 hue_variation = 0.1
 hue_variation_random = 0.1
-hue_variation_curve = SubResource( 4 )
+hue_variation_curve = SubResource( 6 )
 
 [node name="Player" type="RigidBody2D" groups=[
 "Player",
@@ -105,13 +106,13 @@ __meta__ = {
 }
 
 [node name="PartsHit" type="Particles2D" parent="."]
-material = SubResource( 8 )
+material = SubResource( 3 )
 emitting = false
 amount = 3
 lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 9 )
+process_material = SubResource( 4 )
 texture = ExtResource( 5 )
 
 [node name="PartsDie" type="Particles2D" parent="."]
@@ -120,7 +121,7 @@ amount = 24
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 7 )
+process_material = SubResource( 9 )
 
 [node name="TimerDash" type="Timer" parent="."]
 one_shot = true
