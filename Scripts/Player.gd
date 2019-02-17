@@ -10,6 +10,7 @@ enum {U, D, L, R, UL, UR, DL, DR}
 var dir: int = D
 
 var damage: int = 0
+var stock: int = 3
 
 var dash_cd: bool = false
 var dash_cd_value: float = 100
@@ -26,7 +27,7 @@ onready var camera = get_tree().get_root().get_node("Scene").get_node("Camera2D"
 
 func _ready():
 	cd_bar_hue_init = cd_bar.tint_progress.h
-	temp_add = "2" if player_two else ""
+	temp_add = "2" if player_two else "" # I am so sorry
 
 
 func _process(delta):
@@ -34,22 +35,6 @@ func _process(delta):
 	dash_cd_value = max(dash_cd_value - 1.7 * delta * 60, 0)
 	cd_bar.set_value(dash_cd_value)
 	cd_bar.tint_progress.h = max(cd_bar.tint_progress.h - 0.28 * delta, 0)
-	
-	if get_position().x < camera.limit_left or get_position().x > camera.limit_right or get_position().y < camera.limit_top or get_position().y > camera.limit_bottom and not dead:
-		linear_velocity = Vector2.ZERO
-		dead = true
-		control = false
-		$Sprite.modulate.a = 0
-		if get_position().x < camera.limit_left:
-			$PartsDie.set_rotation_degrees(0)
-		elif get_position().x > camera.limit_right:
-			$PartsDie.set_rotation_degrees(180)
-		elif get_position().y < camera.limit_top:
-			$PartsDie.set_rotation_degrees(90)
-		elif get_position().y > camera.limit_bottom:
-			$PartsDie.set_rotation_degrees(270)
-		$PartsDie.set_emitting(true)
-		$TimerRespawn.start()
 
 
 func _physics_process(delta):
@@ -64,6 +49,24 @@ func _physics_process(delta):
 	
 	if dead:
 		linear_velocity = Vector2.ZERO
+	
+	if (get_position().x < camera.limit_left or get_position().x > camera.limit_right or get_position().y < camera.limit_top or get_position().y > camera.limit_bottom) and not dead:
+		linear_velocity = Vector2.ZERO
+		dead = true
+		control = false
+		$Sprite.modulate.a = 0
+		if get_position().x < camera.limit_left:
+			$PartsDie.set_rotation_degrees(0)
+		elif get_position().x > camera.limit_right:
+			$PartsDie.set_rotation_degrees(180)
+		elif get_position().y < camera.limit_top:
+			$PartsDie.set_rotation_degrees(90)
+		elif get_position().y > camera.limit_bottom:
+			$PartsDie.set_rotation_degrees(270)
+		$PartsDie.set_emitting(true)
+		stock -= 1
+		if stock > 0:
+			$TimerRespawn.start()
 
 
 func input(delta):
