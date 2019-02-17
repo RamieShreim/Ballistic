@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/dotted bg.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/STAGE SELECT.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/white grad.png" type="Texture" id=3]
+
+[node name="stage selection" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 973.0
+margin_bottom = 566.0
+color = Color( 0, 0, 0, 0.466667 )
+
+[node name="dotted bg" type="Sprite" parent="."]
+modulate = Color( 0.0392157, 0.294118, 0.482353, 0.329412 )
+position = Vector2( 201.543, 281.848 )
+scale = Vector2( 1.18907, 1.18907 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="shade" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 495.428, 177.71 )
+scale = Vector2( 1.02787, 1.00451 )
+texture = ExtResource( 2 )
+
+[node name="bl" type="Sprite" parent="."]
+modulate = Color( 0.0196078, 0.627451, 0.866667, 1 )
+position = Vector2( 496.336, 168.035 )
+texture = ExtResource( 2 )
+
+[node name="LinkButton" type="LinkButton" parent="."]
+margin_left = 312.371
+margin_top = 262.591
+margin_right = 397.371
+margin_bottom = 276.591
+size_flags_stretch_ratio = 0.0
+text = "WOOD SHOP"
+underline = 1
+
+[node name="gradient" type="Sprite" parent="."]
+modulate = Color( 0.2, 0.619608, 0.733333, 0.866667 )
+position = Vector2( 555.345, 220.592 )
+scale = Vector2( 11.5771, 11.0398 )
+texture = ExtResource( 3 )
+
