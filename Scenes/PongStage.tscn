@@ -7,7 +7,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-extents = Vector2( 1920.18, 10 )
+extents = Vector2( 376.929, 338.108 )
 
 [sub_resource type="Animation" id=2]
 
@@ -77,39 +77,70 @@ tracks/1/keys = {
 position = Vector2( 2.17847, 0.268913 )
 
 [node name="background" type="ColorRect" parent="."]
-margin_left = -2489.85
-margin_top = -714.804
-margin_right = 2990.15
-margin_bottom = 2313.2
+margin_left = -3068.72
+margin_top = -664.193
+margin_right = 2411.28
+margin_bottom = 2363.81
 color = Color( 0.0235294, 0.215686, 0.12549, 1 )
-
-[node name="midline1" type="ColorRect" parent="."]
-modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
-margin_left = 504.097
-margin_top = 130.582
-margin_right = 519.097
-margin_bottom = 170.582
-
-[node name="midline2" type="ColorRect" parent="."]
-modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
-margin_left = 504.097
-margin_top = 194.838
-margin_right = 519.097
-margin_bottom = 234.838
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="midline3" type="ColorRect" parent="."]
 modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
-margin_left = 504.097
-margin_top = 258.974
-margin_right = 519.097
-margin_bottom = 298.974
+margin_left = 503.322
+margin_top = 235.311
+margin_right = 518.322
+margin_bottom = 275.311
+
+[node name="midline8" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 503.322
+margin_top = -8.15779
+margin_right = 518.322
+margin_bottom = 31.8422
+
+[node name="midline11" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 503.322
+margin_top = -246.838
+margin_right = 518.322
+margin_bottom = -206.838
+
+[node name="midline13" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 503.322
+margin_top = -486.399
+margin_right = 518.322
+margin_bottom = -446.399
 
 [node name="midline4" type="ColorRect" parent="."]
 modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
 margin_left = 504.097
-margin_top = 328.218
+margin_top = 312.032
 margin_right = 519.097
-margin_bottom = 368.218
+margin_bottom = 352.032
+
+[node name="midline6" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = 68.5636
+margin_right = 519.097
+margin_bottom = 108.564
+
+[node name="midline9" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = -170.117
+margin_right = 519.097
+margin_bottom = -130.117
+
+[node name="midline12" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = -409.678
+margin_right = 519.097
+margin_bottom = -369.678
 
 [node name="midline5" type="ColorRect" parent="."]
 modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
@@ -118,38 +149,47 @@ margin_top = 398.752
 margin_right = 519.097
 margin_bottom = 438.752
 
+[node name="midline7" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = 155.283
+margin_right = 519.097
+margin_bottom = 195.283
+
+[node name="midline10" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = -83.397
+margin_right = 519.097
+margin_bottom = -43.397
+
+[node name="midline14" type="ColorRect" parent="."]
+modulate = Color( 0.215686, 0.784314, 0.372549, 0.388235 )
+margin_left = 504.097
+margin_top = -322.958
+margin_right = 519.097
+margin_bottom = -282.958
+
 [node name="Bottom RECT" type="StaticBody2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom RECT"]
-position = Vector2( 393.171, 452.513 )
+position = Vector2( 526.044, 777.872 )
 shape = SubResource( 1 )
 
 [node name="Stage Bottom RECT" type="ColorRect" parent="Bottom RECT"]
 modulate = Color( 0.215686, 0.784314, 0.372549, 1 )
-margin_left = -925.397
-margin_top = 443.586
-margin_right = 2059.6
-margin_bottom = 819.586
+margin_left = 112.0
+margin_top = 442.0
+margin_right = 897.0
+margin_bottom = 985.0
 
 [node name="Top RECT" type="StaticBody2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top RECT"]
-position = Vector2( 314.309, 104.171 )
-shape = SubResource( 1 )
-
-[node name="Stage Bottom RECT" type="ColorRect" parent="Top RECT"]
-modulate = Color( 0.215686, 0.784314, 0.372549, 1 )
-margin_left = -1042.56
-margin_top = -191.905
-margin_right = 1964.44
-margin_bottom = 117.095
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 426.925, 392.051 )
@@ -160,7 +200,7 @@ position = Vector2( 631.252, 375.601 )
 player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 30.5907, 107.811 )
+position = Vector2( 13.2229, 97.2393 )
 anchor_mode = 0
 current = true
 process_mode = 0
