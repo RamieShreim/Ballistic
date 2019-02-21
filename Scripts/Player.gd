@@ -21,6 +21,8 @@ var cd_bar_hue_init: int
 const DASH_SPEED: int = 32000
 
 const parts_dash = preload("res://Instances/Particles/PartsDash.tscn")
+const burst_player = preload("res://Instances/System/SoundBurst.tscn")
+const sound_bounce = preload("res://Sounds/Bounce.ogg")
 
 onready var spr = $Sprite
 onready var cd_bar = $DashCD
@@ -42,6 +44,10 @@ func _process(delta):
 func _physics_process(delta):
 	# Bounce animation
 	if len(get_colliding_bodies()) > 0:
+		var sound = burst_player.instance()
+		sound.set_stream(sound_bounce)
+		sound.set_volume_db(-12)
+		get_tree().get_root().add_child(sound)
 		spr.set_scale(Vector2(1, 0.5))
 		
 	spr.scale.y = min(spr.scale.y + 1 * delta, 1)
@@ -66,6 +72,7 @@ func _physics_process(delta):
 		elif get_position().y > camera.limit_bottom:
 			$PartsDie.set_rotation_degrees(270)
 		$PartsDie.set_emitting(true)
+		$CollisionShape2D.set_disabled(true)
 		stock -= 1
 		if stock > 0:
 			$TimerRespawn.start()
@@ -226,7 +233,8 @@ func _on_Player_body_entered(body):
 
 
 func _on_TimerRespawn_timeout():
-	set_position(Vector2(520, 100))
+	$CollisionShape2D.set_disabled(false)
+	set_position(Vector2(600 if player_two else 440, 100))
 	$Sprite.modulate.a = 1
 	damage = 0
 	dead = false

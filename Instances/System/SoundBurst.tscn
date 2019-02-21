@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="SoundBurst" type="AudioStreamPlayer"]
+autoplay = true
+
+[connection signal="finished" from="." to="." method="queue_free"]
