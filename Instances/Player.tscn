@@ -125,10 +125,19 @@ process_material = SubResource( 9 )
 [node name="TimerDash" type="Timer" parent="."]
 one_shot = true
 
+[node name="TimerHit" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="TimerRespawn" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
+[node name="TimerRestart" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 [connection signal="timeout" from="TimerDash" to="." method="_on_TimerDash_timeout"]
+[connection signal="timeout" from="TimerHit" to="." method="_on_TimerHit_timeout"]
 [connection signal="timeout" from="TimerRespawn" to="." method="_on_TimerRespawn_timeout"]
+[connection signal="timeout" from="TimerRestart" to="." method="_on_TimerRestart_timeout"]

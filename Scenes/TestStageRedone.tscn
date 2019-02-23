@@ -40,7 +40,6 @@ position = Vector2( 729.199, 398.989 )
 player_two = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 517.834, 319.718 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

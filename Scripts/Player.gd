@@ -10,6 +10,7 @@ enum {U, D, L, R, UL, UR, DL, DR}
 var dir: int = D
 var dash_dir: int = D
 const dash_knockback: int = 10
+var can_hit: bool = true
 
 var damage: int = 0
 var stock: int = 3
@@ -17,6 +18,7 @@ var stock: int = 3
 var dash_cd: bool = false
 var dash_cd_value: float = 100
 var cd_bar_hue_init: int
+var can_dash: bool = true
 
 const DASH_SPEED: int = 32000
 
@@ -49,6 +51,7 @@ func _physics_process(delta):
 		sound.set_volume_db(-12)
 		get_tree().get_root().add_child(sound)
 		spr.set_scale(Vector2(1, 0.5))
+		can_dash = true
 		
 	spr.scale.y = min(spr.scale.y + 1 * delta, 1)
 	
@@ -76,6 +79,8 @@ func _physics_process(delta):
 		stock -= 1
 		if stock > 0:
 			$TimerRespawn.start()
+		else:
+			$TimerRestart.start()
 
 
 func input(delta):
@@ -110,9 +115,10 @@ func input(delta):
 		else:
 			dir = R
 		
-	if Input.is_action_just_pressed("ui_accept" + temp_add) and not dash_cd:
+	if Input.is_action_just_pressed("ui_accept" + temp_add) and not dash_cd:# and can_dash:
 		dash_dir = dir
 		dash(delta)
+		can_dash = false
 
 
 func dash(delta):
@@ -152,9 +158,9 @@ func _on_TimerDash_timeout():
 
 
 func _on_Player_body_entered(body):
-	if dash_cd and body.is_in_group("Player"):
+	if dash_cd and body.is_in_group("Player") and can_hit and body.can_hit:
 		var magnitude = sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2))
-		print(magnitude)
+		#print(magnitude)
 		#print("OLD LINEAR VELOCITY: %d" % sqrt(pow(linear_velocity.x, daad2) + pow(linear_velocity.y, 2)))
 		#print("NEW LINEAR VELOCITY: %d" % sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2)))
 		if not body.dash_cd:
@@ -230,6 +236,10 @@ func _on_Player_body_entered(body):
 						linear_velocity.x += damage * dash_knockback
 						linear_velocity.y += damage * dash_knockback
 				get_node("PartsHit").set_emitting(true)
+		can_hit = false
+		body.can_hit = false
+		$TimerHit.start()
+		body.get_node("TimerHit").start()
 
 
 func _on_TimerRespawn_timeout():
@@ -239,3 +249,12 @@ func _on_TimerRespawn_timeout():
 	damage = 0
 	dead = false
 	control = true
+	can_dash = true
+
+
+func _on_TimerRestart_timeout():
+	get_tree().reload_current_scene()
+
+
+func _on_TimerHit_timeout():
+	can_hit = true
