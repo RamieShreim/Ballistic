@@ -74,6 +74,7 @@ tracks/1/keys = {
 }
 
 [node name="Scene" type="Node2D"]
+editor/display_folded = true
 position = Vector2( 2.17847, 0.268913 )
 
 [node name="background" type="ColorRect" parent="."]

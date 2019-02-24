@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 163.428
+margin_top = 44.8799
+margin_right = 175.428
+margin_bottom = 64.8799
+icon = SubResource( 1 )
+
