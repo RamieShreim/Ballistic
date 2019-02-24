@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/BannerControl.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Ball.png" type="Texture" id=2]
 [ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sprites/Ball-white.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -87,7 +88,7 @@ margin_bottom = 100.0
 margin_top = 10.0
 margin_right = 100.0
 margin_bottom = 70.0
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
@@ -115,7 +116,7 @@ margin_bottom = 105.0
 [node name="TextureRect" type="TextureRect" parent="PlayerTwoControl/LifeCounter2"]
 margin_right = 15.0
 margin_bottom = 15.0
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
 
@@ -123,7 +124,7 @@ stretch_mode = 1
 margin_left = 16.0
 margin_right = 31.0
 margin_bottom = 15.0
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
 
@@ -131,7 +132,7 @@ stretch_mode = 1
 margin_left = 32.0
 margin_right = 47.0
 margin_bottom = 15.0
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
 

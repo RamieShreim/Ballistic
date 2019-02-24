@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+export(Color) var ball_color = 0xFFFFFFFF
 export(bool) var player_two = false
 var temp_add: String = ""
 
@@ -25,6 +26,7 @@ const DASH_SPEED: int = 32000
 const parts_dash = preload("res://Instances/Particles/PartsDash.tscn")
 const burst_player = preload("res://Instances/System/SoundBurst.tscn")
 const sound_bounce = preload("res://Sounds/Bounce.ogg")
+const part_mat_2 = preload("res://Instances/Particles/Player2Death.tres")
 
 onready var spr = $Sprite
 onready var cd_bar = $DashCD
@@ -34,6 +36,9 @@ onready var camera = get_tree().get_root().get_node("Scene").get_node("Camera2D"
 func _ready():
 	cd_bar_hue_init = cd_bar.tint_progress.h
 	temp_add = "2" if player_two else "" # I am so sorry
+	spr.set_self_modulate(ball_color)
+	$PartsDie.set_process_material($PartsDie.get_process_material().duplicate())
+	$PartsDie.get_process_material().set_color(ball_color)
 
 
 func _process(delta):
@@ -158,88 +163,88 @@ func _on_TimerDash_timeout():
 
 
 func _on_Player_body_entered(body):
-	if dash_cd and body.is_in_group("Player") and can_hit and body.can_hit:
-		var magnitude = sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2))
+	if dash_cd and body.is_in_group("Player"):# and can_hit and body.can_hit:
+		#var magnitude = sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2))
 		#print(magnitude)
 		#print("OLD LINEAR VELOCITY: %d" % sqrt(pow(linear_velocity.x, daad2) + pow(linear_velocity.y, 2)))
 		#print("NEW LINEAR VELOCITY: %d" % sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2)))
 		if not body.dash_cd:
-			body.damage += int(magnitude / 20)
-			match dash_dir:
-				U:
-					body.linear_velocity.y -= body.damage * dash_knockback
-				D:
-					body.linear_velocity.y += body.damage * dash_knockback
-				L:
-					body.linear_velocity.x -= body.damage * dash_knockback
-				R:
-					body.linear_velocity.x += body.damage * dash_knockback
-				UL:
-					body.linear_velocity.x -= body.damage * dash_knockback
-					body.linear_velocity.y -= body.damage * dash_knockback
-				UR:
-					body.linear_velocity.x += body.damage * dash_knockback
-					body.linear_velocity.y -= body.damage * dash_knockback
-				DL:
-					body.linear_velocity.x -= body.damage * dash_knockback
-					body.linear_velocity.y += body.damage * dash_knockback
-				DR:
-					body.linear_velocity.x += body.damage * dash_knockback
-					body.linear_velocity.y += body.damage * dash_knockback
+#			body.damage += int(magnitude / 20)
+#			match dash_dir:
+#				U:
+#					body.linear_velocity.y -= body.damage * dash_knockback
+#				D:
+#					body.linear_velocity.y += body.damage * dash_knockback
+#				L:
+#					body.linear_velocity.x -= body.damage * dash_knockback
+#				R:
+#					body.linear_velocity.x += body.damage * dash_knockback
+#				UL:
+#					body.linear_velocity.x -= body.damage * dash_knockback
+#					body.linear_velocity.y -= body.damage * dash_knockback
+#				UR:
+#					body.linear_velocity.x += body.damage * dash_knockback
+#					body.linear_velocity.y -= body.damage * dash_knockback
+#				DL:
+#					body.linear_velocity.x -= body.damage * dash_knockback
+#					body.linear_velocity.y += body.damage * dash_knockback
+#				DR:
+#					body.linear_velocity.x += body.damage * dash_knockback
+#					body.linear_velocity.y += body.damage * dash_knockback
 			body.get_node("PartsHit").set_emitting(true)
 		else:
 			if linear_velocity > body.linear_velocity:
-				body.damage += 10
-				match dash_dir:
-					U:
-						body.linear_velocity.y -= body.damage * dash_knockback
-					D:
-						body.linear_velocity.y += body.damage * dash_knockback
-					L:
-						body.linear_velocity.x -= body.damage * dash_knockback
-					R:
-						body.linear_velocity.x += body.damage * dash_knockback
-					UL:
-						body.linear_velocity.x -= body.damage * dash_knockback
-						body.linear_velocity.y -= body.damage * dash_knockback
-					UR:
-						body.linear_velocity.x += body.damage * dash_knockback
-						body.linear_velocity.y -= body.damage * dash_knockback
-					DL:
-						body.linear_velocity.x -= body.damage * dash_knockback
-						body.linear_velocity.y += body.damage * dash_knockback
-					DR:
-						body.linear_velocity.x += body.damage * dash_knockback
-						body.linear_velocity.y += body.damage * dash_knockback
+#				body.damage += 10
+#				match dash_dir:
+#					U:
+#						body.linear_velocity.y -= body.damage * dash_knockback
+#					D:
+#						body.linear_velocity.y += body.damage * dash_knockback
+#					L:
+#						body.linear_velocity.x -= body.damage * dash_knockback
+#					R:
+#						body.linear_velocity.x += body.damage * dash_knockback
+#					UL:
+#						body.linear_velocity.x -= body.damage * dash_knockback
+#						body.linear_velocity.y -= body.damage * dash_knockback
+#					UR:
+#						body.linear_velocity.x += body.damage * dash_knockback
+#						body.linear_velocity.y -= body.damage * dash_knockback
+#					DL:
+#						body.linear_velocity.x -= body.damage * dash_knockback
+#						body.linear_velocity.y += body.damage * dash_knockback
+#					DR:
+#						body.linear_velocity.x += body.damage * dash_knockback
+#						body.linear_velocity.y += body.damage * dash_knockback
 				body.get_node("PartsHit").set_emitting(true)
 			elif linear_velocity < body.linear_velocity:
-				damage += 10
-				match dash_dir:
-					U:
-						linear_velocity.y -= damage * dash_knockback
-					D:
-						linear_velocity.y += damage * dash_knockback
-					L:
-						linear_velocity.x -= damage * dash_knockback
-					R:
-						linear_velocity.x += damage * dash_knockback
-					UL:
-						linear_velocity.x -= damage * dash_knockback
-						linear_velocity.y -= damage * dash_knockback
-					UR:
-						linear_velocity.x += damage * dash_knockback
-						linear_velocity.y -= damage * dash_knockback
-					DL:
-						linear_velocity.x -= damage * dash_knockback
-						linear_velocity.y += damage * dash_knockback
-					DR:
-						linear_velocity.x += damage * dash_knockback
-						linear_velocity.y += damage * dash_knockback
+#				damage += 10
+#				match dash_dir:
+#					U:
+#						linear_velocity.y -= damage * dash_knockback
+#					D:
+#						linear_velocity.y += damage * dash_knockback
+#					L:
+#						linear_velocity.x -= damage * dash_knockback
+#					R:
+#						linear_velocity.x += damage * dash_knockback
+#					UL:
+#						linear_velocity.x -= damage * dash_knockback
+#						linear_velocity.y -= damage * dash_knockback
+#					UR:
+#						linear_velocity.x += damage * dash_knockback
+#						linear_velocity.y -= damage * dash_knockback
+#					DL:
+#						linear_velocity.x -= damage * dash_knockback
+#						linear_velocity.y += damage * dash_knockback
+#					DR:
+#						linear_velocity.x += damage * dash_knockback
+#						linear_velocity.y += damage * dash_knockback
 				get_node("PartsHit").set_emitting(true)
-		can_hit = false
-		body.can_hit = false
-		$TimerHit.start()
-		body.get_node("TimerHit").start()
+#		can_hit = false
+		#body.can_hit = false
+		#$TimerHit.start()
+		#body.get_node("TimerHit").start()
 
 
 func _on_TimerRespawn_timeout():
