@@ -67,6 +67,7 @@ func _physics_process(delta):
 		linear_velocity = Vector2.ZERO
 	
 	if (get_position().x < camera.limit_left or get_position().x > camera.limit_right or get_position().y < camera.limit_top or get_position().y > camera.limit_bottom) and not dead:
+		$SoundDie.play()
 		linear_velocity = Vector2.ZERO
 		dead = true
 		control = false
