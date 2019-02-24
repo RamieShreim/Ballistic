@@ -195,8 +195,9 @@ __meta__ = {
 }
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
-modulate = Color( 0.0745098, 0.458824, 0.270588, 1 )
-position = Vector2( 426.925, 391.807 )
+
+position = Vector2( 426.925, 392.051 )
+ball_color = Color( 1, 0.984314, 0, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 modulate = Color( 0.360784, 1, 0.360784, 1 )
