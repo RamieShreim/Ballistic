@@ -7,7 +7,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-extents = Vector2( 376.929, 338.108 )
+extents = Vector2( 390.409, 364.255 )
 
 [sub_resource type="Animation" id=2]
 
@@ -176,7 +176,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom RECT"]
-position = Vector2( 526.044, 777.872 )
+position = Vector2( 505.32, 801.33 )
 shape = SubResource( 1 )
 
 [node name="Stage Bottom RECT" type="ColorRect" parent="Bottom RECT"]
@@ -185,6 +185,9 @@ margin_left = 112.0
 margin_top = 442.0
 margin_right = 897.0
 margin_bottom = 985.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Top RECT" type="StaticBody2D" parent="."]
 __meta__ = {
