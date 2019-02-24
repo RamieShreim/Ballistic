@@ -48,6 +48,17 @@ ball_color = Color( 1, 1, 1, 1 )
 position = Vector2( 0, 32 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player_drop_shadow" type="Sprite" parent="Sprite"]
+modulate = Color( 0, 0, 0, 0.639216 )
+show_behind_parent = true
+position = Vector2( 2.19754, 2.97076 )
+scale = Vector2( 1.03561, 1.03561 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
