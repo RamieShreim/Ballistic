@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+export(Color) var ball_color = 0xFFFFFFFF
 export(bool) var player_two = false
 var temp_add: String = ""
 
@@ -8,6 +9,9 @@ var dead: bool = false
 
 enum {U, D, L, R, UL, UR, DL, DR}
 var dir: int = D
+var dash_dir: int = D
+const dash_knockback: int = 10
+var can_hit: bool = true
 
 var damage: int = 0
 var stock: int = 3
@@ -15,10 +19,14 @@ var stock: int = 3
 var dash_cd: bool = false
 var dash_cd_value: float = 100
 var cd_bar_hue_init: int
+var can_dash: bool = true
 
 const DASH_SPEED: int = 32000
 
 const parts_dash = preload("res://Instances/Particles/PartsDash.tscn")
+const burst_player = preload("res://Instances/System/SoundBurst.tscn")
+const sound_bounce = preload("res://Sounds/Bounce.ogg")
+const part_mat_2 = preload("res://Instances/Particles/Player2Death.tres")
 
 onready var spr = $Sprite
 onready var cd_bar = $DashCD
@@ -28,6 +36,9 @@ onready var camera = get_tree().get_root().get_node("Scene").get_node("Camera2D"
 func _ready():
 	cd_bar_hue_init = cd_bar.tint_progress.h
 	temp_add = "2" if player_two else "" # I am so sorry
+	spr.set_self_modulate(ball_color)
+	$PartsDie.set_process_material($PartsDie.get_process_material().duplicate())
+	$PartsDie.get_process_material().set_color(ball_color)
 
 
 func _process(delta):
@@ -40,7 +51,12 @@ func _process(delta):
 func _physics_process(delta):
 	# Bounce animation
 	if len(get_colliding_bodies()) > 0:
+		var sound = burst_player.instance()
+		sound.set_stream(sound_bounce)
+		sound.set_volume_db(-12)
+		get_tree().get_root().add_child(sound)
 		spr.set_scale(Vector2(1, 0.5))
+		can_dash = true
 		
 	spr.scale.y = min(spr.scale.y + 1 * delta, 1)
 	
@@ -51,6 +67,7 @@ func _physics_process(delta):
 		linear_velocity = Vector2.ZERO
 	
 	if (get_position().x < camera.limit_left or get_position().x > camera.limit_right or get_position().y < camera.limit_top or get_position().y > camera.limit_bottom) and not dead:
+		$SoundDie.play()
 		linear_velocity = Vector2.ZERO
 		dead = true
 		control = false
@@ -64,9 +81,12 @@ func _physics_process(delta):
 		elif get_position().y > camera.limit_bottom:
 			$PartsDie.set_rotation_degrees(270)
 		$PartsDie.set_emitting(true)
+		$CollisionShape2D.set_disabled(true)
 		stock -= 1
 		if stock > 0:
 			$TimerRespawn.start()
+		else:
+			$TimerRestart.start()
 
 
 func input(delta):
@@ -101,8 +121,10 @@ func input(delta):
 		else:
 			dir = R
 		
-	if Input.is_action_just_pressed("ui_accept" + temp_add) and not dash_cd:
+	if Input.is_action_just_pressed("ui_accept" + temp_add) and not dash_cd:# and can_dash:
+		dash_dir = dir
 		dash(delta)
+		can_dash = false
 
 
 func dash(delta):
@@ -142,24 +164,103 @@ func _on_TimerDash_timeout():
 
 
 func _on_Player_body_entered(body):
-	if dash_cd and body.is_in_group("Player"):
-		var magnitude = sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2))
-		print(magnitude)
+	if dash_cd and body.is_in_group("Player"):# and can_hit and body.can_hit:
+		#var magnitude = sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2))
+		#print(magnitude)
+		#print("OLD LINEAR VELOCITY: %d" % sqrt(pow(linear_velocity.x, daad2) + pow(linear_velocity.y, 2)))
+		#print("NEW LINEAR VELOCITY: %d" % sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2)))
 		if not body.dash_cd:
-			body.damage += int(magnitude / 20)
+#			body.damage += int(magnitude / 20)
+#			match dash_dir:
+#				U:
+#					body.linear_velocity.y -= body.damage * dash_knockback
+#				D:
+#					body.linear_velocity.y += body.damage * dash_knockback
+#				L:
+#					body.linear_velocity.x -= body.damage * dash_knockback
+#				R:
+#					body.linear_velocity.x += body.damage * dash_knockback
+#				UL:
+#					body.linear_velocity.x -= body.damage * dash_knockback
+#					body.linear_velocity.y -= body.damage * dash_knockback
+#				UR:
+#					body.linear_velocity.x += body.damage * dash_knockback
+#					body.linear_velocity.y -= body.damage * dash_knockback
+#				DL:
+#					body.linear_velocity.x -= body.damage * dash_knockback
+#					body.linear_velocity.y += body.damage * dash_knockback
+#				DR:
+#					body.linear_velocity.x += body.damage * dash_knockback
+#					body.linear_velocity.y += body.damage * dash_knockback
 			body.get_node("PartsHit").set_emitting(true)
 		else:
 			if linear_velocity > body.linear_velocity:
-				body.damage += 10
+#				body.damage += 10
+#				match dash_dir:
+#					U:
+#						body.linear_velocity.y -= body.damage * dash_knockback
+#					D:
+#						body.linear_velocity.y += body.damage * dash_knockback
+#					L:
+#						body.linear_velocity.x -= body.damage * dash_knockback
+#					R:
+#						body.linear_velocity.x += body.damage * dash_knockback
+#					UL:
+#						body.linear_velocity.x -= body.damage * dash_knockback
+#						body.linear_velocity.y -= body.damage * dash_knockback
+#					UR:
+#						body.linear_velocity.x += body.damage * dash_knockback
+#						body.linear_velocity.y -= body.damage * dash_knockback
+#					DL:
+#						body.linear_velocity.x -= body.damage * dash_knockback
+#						body.linear_velocity.y += body.damage * dash_knockback
+#					DR:
+#						body.linear_velocity.x += body.damage * dash_knockback
+#						body.linear_velocity.y += body.damage * dash_knockback
 				body.get_node("PartsHit").set_emitting(true)
 			elif linear_velocity < body.linear_velocity:
-				damage += 10
+#				damage += 10
+#				match dash_dir:
+#					U:
+#						linear_velocity.y -= damage * dash_knockback
+#					D:
+#						linear_velocity.y += damage * dash_knockback
+#					L:
+#						linear_velocity.x -= damage * dash_knockback
+#					R:
+#						linear_velocity.x += damage * dash_knockback
+#					UL:
+#						linear_velocity.x -= damage * dash_knockback
+#						linear_velocity.y -= damage * dash_knockback
+#					UR:
+#						linear_velocity.x += damage * dash_knockback
+#						linear_velocity.y -= damage * dash_knockback
+#					DL:
+#						linear_velocity.x -= damage * dash_knockback
+#						linear_velocity.y += damage * dash_knockback
+#					DR:
+#						linear_velocity.x += damage * dash_knockback
+#						linear_velocity.y += damage * dash_knockback
 				get_node("PartsHit").set_emitting(true)
+#		can_hit = false
+		#body.can_hit = false
+		#$TimerHit.start()
+		#body.get_node("TimerHit").start()
 
 
 func _on_TimerRespawn_timeout():
-	set_position(Vector2(520, 100))
+	$CollisionShape2D.set_disabled(false)
+	set_position(Vector2(600 if player_two else 440, 100))
 	$Sprite.modulate.a = 1
 	damage = 0
 	dead = false
 	control = true
+	can_dash = true
+
+
+func _on_TimerRestart_timeout():
+	get_tree().reload_current_scene()
+
+
+func _on_TimerHit_timeout():
+	can_hit = true

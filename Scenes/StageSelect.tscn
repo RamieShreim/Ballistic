@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/dotted bg.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/STAGE SELECT.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/white grad.png" type="Texture" id=3]
+[ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+
+font_path = "res://GROBOLD.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 50
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 100
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
 
 [node name="stage selection" type="Node2D"]
 
@@ -22,28 +45,74 @@ __meta__ = {
 }
 
 [node name="shade" type="Sprite" parent="."]
+visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 495.428, 177.71 )
 scale = Vector2( 1.02787, 1.00451 )
 texture = ExtResource( 2 )
 
 [node name="bl" type="Sprite" parent="."]
+visible = false
 modulate = Color( 0.0196078, 0.627451, 0.866667, 1 )
 position = Vector2( 496.336, 168.035 )
 texture = ExtResource( 2 )
 
-[node name="LinkButton" type="LinkButton" parent="."]
-margin_left = 312.371
-margin_top = 262.591
-margin_right = 397.371
-margin_bottom = 276.591
-size_flags_stretch_ratio = 0.0
-text = "WOOD SHOP"
-underline = 1
-
 [node name="gradient" type="Sprite" parent="."]
-modulate = Color( 0.2, 0.619608, 0.733333, 0.866667 )
+modulate = Color( 0.670588, 0.0313726, 0.556863, 0.721569 )
 position = Vector2( 555.345, 220.592 )
 scale = Vector2( 11.5771, 11.0398 )
 texture = ExtResource( 3 )
+
+[node name="wooshop" type="LinkButton" parent="."]
+margin_left = 321.887
+margin_top = 277.642
+margin_right = 633.887
+margin_bottom = 327.642
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "WOOD SHOP"
+underline = 2
+
+[node name="MAGNOVOX" type="LinkButton" parent="."]
+margin_left = 321.132
+margin_top = 358.44
+margin_right = 645.132
+margin_bottom = 408.44
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "MAGNAVOX"
+underline = 2
+
+[node name="woodland" type="LinkButton" parent="."]
+margin_left = 321.887
+margin_top = 440.749
+margin_right = 645.887
+margin_bottom = 490.749
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "WOODLAND"
+underline = 2
+
+[node name="stage select shadow" type="LinkButton" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 135.262
+margin_top = 105.98
+margin_right = 862.262
+margin_bottom = 205.98
+custom_fonts/font = SubResource( 3 )
+text = "STAGE SELECT"
+underline = 2
+
+[node name="stage select" type="LinkButton" parent="."]
+modulate = Color( 0.254902, 0.733333, 0.913725, 1 )
+margin_left = 123.22
+margin_top = 91.8887
+margin_right = 850.22
+margin_bottom = 191.889
+custom_fonts/font = SubResource( 3 )
+text = "STAGE SELECT"
+underline = 2
 
