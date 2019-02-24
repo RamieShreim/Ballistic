@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export(Color) var color = 0xFFFFFFFF
+export(Color) var ball_color = 0xFFFFFFFF
 export(bool) var player_two = false
 var temp_add: String = ""
 
@@ -26,6 +26,7 @@ const DASH_SPEED: int = 32000
 const parts_dash = preload("res://Instances/Particles/PartsDash.tscn")
 const burst_player = preload("res://Instances/System/SoundBurst.tscn")
 const sound_bounce = preload("res://Sounds/Bounce.ogg")
+const part_mat_2 = preload("res://Instances/Particles/Player2Death.tres")
 
 onready var spr = $Sprite
 onready var cd_bar = $DashCD
@@ -35,6 +36,9 @@ onready var camera = get_tree().get_root().get_node("Scene").get_node("Camera2D"
 func _ready():
 	cd_bar_hue_init = cd_bar.tint_progress.h
 	temp_add = "2" if player_two else "" # I am so sorry
+	spr.set_self_modulate(ball_color)
+	$PartsDie.set_process_material($PartsDie.get_process_material().duplicate())
+	$PartsDie.get_process_material().set_color(ball_color)
 
 
 func _process(delta):
