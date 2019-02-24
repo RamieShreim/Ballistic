@@ -25,7 +25,6 @@ const DASH_SPEED: int = 32000
 const parts_dash = preload("res://Instances/Particles/PartsDash.tscn")
 const burst_player = preload("res://Instances/System/SoundBurst.tscn")
 const sound_bounce = preload("res://Sounds/Bounce.ogg")
-const player_two_sprite = preload("res://Sprites/Ball-white.png")
 
 onready var spr = $Sprite
 onready var cd_bar = $DashCD
@@ -35,8 +34,6 @@ onready var camera = get_tree().get_root().get_node("Scene").get_node("Camera2D"
 func _ready():
 	cd_bar_hue_init = cd_bar.tint_progress.h
 	temp_add = "2" if player_two else "" # I am so sorry
-	if player_two:
-		spr.set_texture(player_two_sprite)
 
 
 func _process(delta):
