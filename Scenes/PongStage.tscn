@@ -196,10 +196,11 @@ __meta__ = {
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 426.925, 392.051 )
+ball_color = Color( 1, 0.984314, 0, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
-modulate = Color( 0, 0.788235, 1, 1 )
-position = Vector2( 631.252, 375.601 )
+position = Vector2( 630.821, 388.731 )
+ball_color = Color( 0.360784, 1, 0.360784, 1 )
 player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
