@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/BannerControl.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Ball.png" type="Texture" id=2]
@@ -7,14 +7,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 15
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
-
-size = 60
-use_mipmaps = true
-use_filter = true
+size = 20
 font_data = ExtResource( 3 )
 
 [node name="BannerControl" type="Control"]
@@ -36,45 +29,38 @@ expand = true
 stretch_mode = 6
 
 [node name="PlayerLabel" type="Label" parent="PlayerOneControl"]
-margin_top = 70.0
+margin_left = 100.0
+margin_top = 20.0
 margin_right = 100.0
 margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
 text = "PLAYER ONE"
 
-[node name="Percentage" type="Label" parent="PlayerOneControl"]
-margin_left = 100.0
-margin_top = 20.0
-margin_right = 235.0
-margin_bottom = 80.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "10%"
-
 [node name="LifeCounter" type="Control" parent="PlayerOneControl"]
-margin_top = 85.0
+margin_left = 100.0
+margin_top = 50.0
 margin_right = 100.0
 margin_bottom = 105.0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerOneControl/LifeCounter"]
-margin_right = 15.0
-margin_bottom = 15.0
+margin_right = 20.0
+margin_bottom = 20.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="PlayerOneControl/LifeCounter"]
-margin_left = 16.0
-margin_right = 31.0
-margin_bottom = 15.0
+margin_left = 22.0
+margin_right = 42.0
+margin_bottom = 20.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="PlayerOneControl/LifeCounter"]
-margin_left = 32.0
-margin_right = 47.0
-margin_bottom = 15.0
+margin_left = 44.0
+margin_right = 64.0
+margin_bottom = 20.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
@@ -93,45 +79,38 @@ expand = true
 stretch_mode = 6
 
 [node name="PlayerLabel" type="Label" parent="PlayerTwoControl"]
-margin_top = 70.0
+margin_left = 100.0
+margin_top = 25.0
 margin_right = 100.0
 margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
 text = "PLAYER TWO"
 
-[node name="Percentage" type="Label" parent="PlayerTwoControl"]
-margin_left = 100.0
-margin_top = 20.0
-margin_right = 235.0
-margin_bottom = 80.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "10%"
-
 [node name="LifeCounter2" type="Control" parent="PlayerTwoControl"]
-margin_top = 85.0
+margin_left = 100.0
+margin_top = 50.0
 margin_right = 100.0
 margin_bottom = 105.0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerTwoControl/LifeCounter2"]
-margin_right = 15.0
-margin_bottom = 15.0
+margin_right = 20.0
+margin_bottom = 20.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="PlayerTwoControl/LifeCounter2"]
-margin_left = 16.0
-margin_right = 31.0
-margin_bottom = 15.0
+margin_left = 22.0
+margin_right = 42.0
+margin_bottom = 20.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="PlayerTwoControl/LifeCounter2"]
-margin_left = 32.0
-margin_right = 47.0
-margin_bottom = 15.0
+margin_left = 44.0
+margin_right = 64.0
+margin_bottom = 20.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 1

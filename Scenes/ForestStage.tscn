@@ -30,9 +30,11 @@ __meta__ = {
 
 [node name="Player1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 286.728, 394.738 )
+ball_color = Color( 0.0352941, 0.341176, 0.0235294, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 729.199, 398.989 )
+ball_color = Color( 0.0235294, 0.0431373, 0.345098, 1 )
 player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -88,7 +90,6 @@ polygon = PoolVector2Array( 2.03784, -3.36264, -198.446, -3.36264, -198.429, -37
 
 [node name="forstplatform" type="Sprite" parent="StaticBody2D/CollisionShape2D2"]
 position = Vector2( -4.38063, 0.196017 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
