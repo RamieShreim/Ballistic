@@ -32,6 +32,7 @@ __meta__ = {
 position = Vector2( 213.268, 187.961 )
 ball_color = Color( 0.882353, 0.890196, 0.0745098, 1 )
 
+
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 794.497, 190.852 )
 ball_color = Color( 0.0470588, 0.784314, 0.882353, 1 )

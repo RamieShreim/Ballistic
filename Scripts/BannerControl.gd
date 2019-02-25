@@ -7,7 +7,7 @@ var damage_2_prev: int = 0
 
 onready var player_1 = get_tree().get_root().get_node("Scene").get_node("Player1")
 onready var player_2 = get_tree().get_root().get_node("Scene").get_node("Player2")
-	
+
 onready var stock_1_1 = $PlayerOneControl/LifeCounter/TextureRect
 onready var stock_1_2 = $PlayerOneControl/LifeCounter/TextureRect2
 onready var stock_1_3 = $PlayerOneControl/LifeCounter/TextureRect3
