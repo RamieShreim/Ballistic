@@ -30,8 +30,6 @@ func _process(delta):
 	if damage_1 != damage_1_prev:
 		damage_1_prev = damage_1
 		#label_1.
-	label_1.set_text("%d%%" % player_1.damage)
-	label_2.set_text("%d%%" % player_2.damage)
 	
 	match player_1.stock: # I am so sorry again
 		3:
