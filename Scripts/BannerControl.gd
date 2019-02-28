@@ -16,9 +16,23 @@ onready var stock_2_1 = $PlayerTwoControl/LifeCounter2/TextureRect
 onready var stock_2_2 = $PlayerTwoControl/LifeCounter2/TextureRect2
 onready var stock_2_3 = $PlayerTwoControl/LifeCounter2/TextureRect3
 
+onready var player_1_sprite = $PlayerOneControl/SpriteOne/Sprite
+onready var player_2_sprite = $PlayerTwoControl/SpriteTwo/Sprite
+
+onready var player_1_label = $PlayerOneControl/PlayerLabel
+onready var player_2_label = $PlayerTwoControl/PlayerLabel
 
 func _ready():
-	
+	player_1_sprite.set_self_modulate(player_1.ball_color)
+	player_2_sprite.set_self_modulate(player_2.ball_color)
+	stock_1_1.set_self_modulate(player_1.ball_color)
+	stock_1_2.set_self_modulate(player_1.ball_color)
+	stock_1_3.set_self_modulate(player_1.ball_color)
+	stock_2_1.set_self_modulate(player_2.ball_color)
+	stock_2_2.set_self_modulate(player_2.ball_color)
+	stock_2_3.set_self_modulate(player_2.ball_color)
+	player_1_label.add_color_override("font_color", player_1.ball_color)
+	player_2_label.add_color_override("font_color", player_2.ball_color)
 	pass # Replace with function body.
 
 
