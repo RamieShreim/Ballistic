@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/CPPStage.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Binary.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://PIXEARG.TTF" type="DynamicFontData" id=5]
-[ext_resource path="res://Scripts/CPPCode.gd" type="Script" id=6]
-[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -305,7 +304,6 @@ ball_color = Color( 1, 0, 0.376471, 1 )
 [node name="Player2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 745, 456 )
 ball_color = Color( 0, 0.811765, 1, 1 )
-player_number = "2"
 
 [node name="Code" type="Label" parent="."]
 margin_left = 456.0
@@ -316,7 +314,6 @@ custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 1, 0, 1 )
 text = "#define PLATFORM"
 percent_visible = 0.0
-script = ExtResource( 6 )
 
 [node name="TimerEvents" type="Timer" parent="."]
 wait_time = 3.0
@@ -337,7 +334,7 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 6 )]
 
 [connection signal="timeout" from="TimerEvents" to="." method="_on_TimerEvents_timeout"]
 [connection signal="timeout" from="TimerWall" to="." method="_on_TimerWall_timeout"]

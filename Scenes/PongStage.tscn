@@ -7,7 +7,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-extents = Vector2( 376.929, 338.108 )
+extents = Vector2( 390.409, 364.255 )
 
 [sub_resource type="Animation" id=2]
 
@@ -176,7 +176,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom RECT"]
-position = Vector2( 526.044, 777.872 )
+position = Vector2( 505.32, 801.33 )
 shape = SubResource( 1 )
 
 [node name="Stage Bottom RECT" type="ColorRect" parent="Bottom RECT"]
@@ -185,6 +185,9 @@ margin_left = 112.0
 margin_top = 442.0
 margin_right = 897.0
 margin_bottom = 985.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Top RECT" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -198,12 +201,12 @@ ball_color = Color( 0.686275, 1, 0, 1 )
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 630.821, 388.731 )
 ball_color = Color( 0, 1, 0.764706, 1 )
-player_number = "2"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 13.2229, 97.2393 )
 anchor_mode = 0
 current = true
+process_mode = 0
 limit_left = 0
 limit_top = -200
 limit_right = 1000
