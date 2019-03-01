@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/EndingMenu/Restart.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/StageSelect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/EndingMenu/QuitButton.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 60
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 36
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.278431 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -480.0
+margin_right = 480.0
+margin_bottom = 299.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 293.0
+margin_top = 119.0
+margin_right = 667.0
+margin_bottom = 179.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_y = 3
+text = "GAME OVER"
+
+[node name="StageSelectButton" type="Button" parent="."]
+margin_left = 368.219
+margin_top = 211.897
+margin_right = 595.219
+margin_bottom = 254.897
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 0.87451, 1, 0, 1 )
+text = "Stage Select"
+script = ExtResource( 2 )
+scene_to_change_to = ExtResource( 3 )
+
+[node name="MainMenuButton" type="Button" parent="."]
+margin_left = 369.58
+margin_top = 283.997
+margin_right = 596.58
+margin_bottom = 326.997
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 0.0470588, 0.529412, 1, 1 )
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="."]
+margin_left = 368.219
+margin_top = 356.097
+margin_right = 595.219
+margin_bottom = 399.097
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 1, 0.0470588, 0.0470588, 1 )
+text = "Quit Game"
+script = ExtResource( 4 )
+
+[connection signal="pressed" from="StageSelectButton" to="StageSelectButton" method="_on_Restart_pressed"]
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_QuitButton_pressed"]
