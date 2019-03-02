@@ -201,7 +201,7 @@ ball_color = Color( 0, 1, 0.764706, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 630.821, 388.731 )
-ball_color = Color( 0.686275, 1, 0, 1 )
+ball_color = Color( 0, 1, 0.764706, 1 )
 player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

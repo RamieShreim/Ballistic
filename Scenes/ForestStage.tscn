@@ -29,18 +29,13 @@ __meta__ = {
 }
 
 [node name="Player1" parent="." instance=ExtResource( 2 )]
-<<<<<<< HEAD
-position = Vector2( 213.268, 187.961 )
-ball_color = Color( 0.882353, 0.890196, 0.0745098, 1 )
-
-
 position = Vector2( 286.822, 394.731 )
 ball_color = Color( 1, 0, 0, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 729.199, 398.989 )
 ball_color = Color( 0.521569, 0, 1, 1 )
-player_number = "2"
+player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 30.5907, 107.811 )
