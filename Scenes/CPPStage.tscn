@@ -43,7 +43,6 @@ size = 32
 font_data = ExtResource( 4 )
 
 [node name="Scene" type="Node2D"]
-position = Vector2( 0, 132 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 399.0 ],
@@ -54,128 +53,74 @@ __meta__ = {
 margin_right = 1290.0
 margin_bottom = 778.0
 color = Color( 0.0509804, 0.0705882, 0.172549, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Binary" type="Node2D" parent="."]
 modulate = Color( 0.0313726, 0.141176, 0.294118, 1 )
 position = Vector2( 0, 38 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Binary"]
 position = Vector2( 314, 119 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite9" type="Sprite" parent="Binary"]
 position = Vector2( -296, 119 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite7" type="Sprite" parent="Binary"]
 position = Vector2( 313, -342 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite10" type="Sprite" parent="Binary"]
 position = Vector2( -297, -342 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite2" type="Sprite" parent="Binary"]
 position = Vector2( 942, 119 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite13" type="Sprite" parent="Binary"]
 position = Vector2( 1571, 119 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite8" type="Sprite" parent="Binary"]
 position = Vector2( 942, -342 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite14" type="Sprite" parent="Binary"]
 position = Vector2( 1569, -342 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite3" type="Sprite" parent="Binary"]
 position = Vector2( 314, 588 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite12" type="Sprite" parent="Binary"]
 position = Vector2( -296, 588 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite6" type="Sprite" parent="Binary"]
 position = Vector2( 314, 1054 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite11" type="Sprite" parent="Binary"]
 position = Vector2( -296, 1054 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite4" type="Sprite" parent="Binary"]
 position = Vector2( 942, 588 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite15" type="Sprite" parent="Binary"]
 position = Vector2( 1568, 588 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite5" type="Sprite" parent="Binary"]
 position = Vector2( 942, 1054 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite16" type="Sprite" parent="Binary"]
 position = Vector2( 1570, 1054 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Binary"]
 autoplay = "Scroll"
@@ -183,28 +128,16 @@ playback_speed = 0.33
 anims/Scroll = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 color = Color( 0.211765, 0.262745, 0.584314, 1 )
 polygon = PoolVector2Array( 478, 516, 478, 640, 300, 640, 176, 516 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 478, 516, 478, 640, 300, 640, 176, 516 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Center" type="StaticBody2D" parent="."]
 position = Vector2( 479, 518 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="ColorRect" type="ColorRect" parent="Center"]
 margin_left = -1.0
@@ -212,40 +145,22 @@ margin_top = -2.0
 margin_right = 321.0
 margin_bottom = 122.0
 color = Color( 0.211765, 0.262745, 0.584314, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Center"]
 position = Vector2( 160, 60 )
 shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
 color = Color( 0.211765, 0.262745, 0.584314, 1 )
 polygon = PoolVector2Array( 800, 516, 800, 640, 992, 640, 1096, 516 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 polygon = PoolVector2Array( 800, 516, 800, 640, 992, 640, 1096, 516 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2( 270, 333 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="ColorRect" type="ColorRect" parent="Wall"]
 margin_left = -56.0
@@ -253,17 +168,11 @@ margin_top = -184.0
 margin_right = 56.0
 margin_bottom = 185.0
 color = Color( 0.211765, 0.262745, 0.584314, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 position = Vector2( 0, 1 )
 shape = SubResource( 3 )
 disabled = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Block" type="StaticBody2D" parent="."]
 position = Vector2( 871, 279 )
@@ -274,16 +183,10 @@ margin_top = -71.0
 margin_right = 71.0
 margin_bottom = 71.0
 color = Color( 0.211765, 0.262745, 0.584314, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
 shape = SubResource( 4 )
 disabled = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Player1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 420, 458 )
@@ -305,7 +208,6 @@ text = "#define PLATFORM"
 percent_visible = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 13.2229, 73.2393 )
 anchor_mode = 0
 current = true
 process_mode = 0
@@ -355,6 +257,8 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 6 )]
+margin_top = 421.0
+margin_bottom = 521.0
 
 [connection signal="timeout" from="TimerEvents" to="." method="_on_TimerEvents_timeout"]
 [connection signal="timeout" from="TimerWall" to="." method="_on_TimerWall_timeout"]
