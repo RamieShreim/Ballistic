@@ -29,11 +29,11 @@ __meta__ = {
 }
 
 [node name="Player1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 286.822, 394.731 )
+position = Vector2( 210.478, 188.608 )
 ball_color = Color( 1, 0, 0, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 729.199, 398.989 )
+position = Vector2( 793.798, 189.93 )
 ball_color = Color( 0.521569, 0, 1, 1 )
 player_two = true
 
