@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ballistictitle.ogg-74f5be6402c54e5880596d43ee9476ac.oggstr"
+
+[deps]
+
+source_file="res://Sounds/ballistictitle.ogg"
+dest_files=[ "res://.import/ballistictitle.ogg-74f5be6402c54e5880596d43ee9476ac.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
