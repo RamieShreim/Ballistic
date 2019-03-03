@@ -129,6 +129,7 @@ func input(delta):
 
 
 func dash(delta):
+	$SoundDash.play()
 	var parts = parts_dash.instance()
 	parts.set_position(get_position())
 	parts.set_emitting(true)

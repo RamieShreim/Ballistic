@@ -3,7 +3,7 @@
 [ext_resource path="res://Sprites/Forest.png" type="Texture" id=1]
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=3]
-[ext_resource path="res://Sprites/forestfloor.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ForestFloor2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/forstplatform.png" type="Texture" id=5]
 [ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=6]
 
@@ -29,18 +29,13 @@ __meta__ = {
 }
 
 [node name="Player1" parent="." instance=ExtResource( 2 )]
-<<<<<<< HEAD
-position = Vector2( 213.268, 187.961 )
-ball_color = Color( 0.882353, 0.890196, 0.0745098, 1 )
-
-
-position = Vector2( 286.822, 394.731 )
+position = Vector2( 210.478, 188.608 )
 ball_color = Color( 1, 0, 0, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 729.199, 398.989 )
+position = Vector2( 793.798, 189.93 )
 ball_color = Color( 0.521569, 0, 1, 1 )
-player_number = "2"
+player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 30.5907, 107.811 )
