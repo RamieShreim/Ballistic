@@ -8,7 +8,7 @@
 [ext_resource path="res://Scenes/movingplatform1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=7]
 [ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Sounds/ballisticsong.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/woodshop.ogg" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -101,9 +101,9 @@ position = Vector2( 30.5907, 107.811 )
 anchor_mode = 0
 current = true
 process_mode = 0
-limit_left = -400
+limit_left = -100
 limit_top = -200
-limit_right = 1400
+limit_right = 1125
 limit_bottom = 600
 limit_smoothed = true
 smoothing_enabled = true
@@ -122,7 +122,7 @@ margin_top = 420.0
 margin_right = 584.0
 margin_bottom = 520.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="woodshoptheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
 volume_db = -8.583
 autoplay = true

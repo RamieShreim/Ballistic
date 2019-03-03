@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/woodshop.ogg-962008a40c71a64ea65979d12dca331b.oggstr"
+
+[deps]
+
+source_file="res://Sounds/woodshop.ogg"
+dest_files=[ "res://.import/woodshop.ogg-962008a40c71a64ea65979d12dca331b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
