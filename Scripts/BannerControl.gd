@@ -7,9 +7,6 @@ var damage_2_prev: int = 0
 
 onready var player_1 = get_tree().get_root().get_node("Scene").get_node("Player1")
 onready var player_2 = get_tree().get_root().get_node("Scene").get_node("Player2")
-	
-onready var label_1 = $PlayerOneControl/Percentage
-onready var label_2 = $PlayerTwoControl/Percentage
 
 onready var stock_1_1 = $PlayerOneControl/LifeCounter/TextureRect
 onready var stock_1_2 = $PlayerOneControl/LifeCounter/TextureRect2
@@ -19,9 +16,23 @@ onready var stock_2_1 = $PlayerTwoControl/LifeCounter2/TextureRect
 onready var stock_2_2 = $PlayerTwoControl/LifeCounter2/TextureRect2
 onready var stock_2_3 = $PlayerTwoControl/LifeCounter2/TextureRect3
 
+onready var player_1_sprite = $PlayerOneControl/SpriteOne/Sprite
+onready var player_2_sprite = $PlayerTwoControl/SpriteTwo/Sprite
+
+onready var player_1_label = $PlayerOneControl/PlayerLabel
+onready var player_2_label = $PlayerTwoControl/PlayerLabel
 
 func _ready():
-	
+	player_1_sprite.set_self_modulate(player_1.ball_color)
+	player_2_sprite.set_self_modulate(player_2.ball_color)
+	stock_1_1.set_self_modulate(player_1.ball_color)
+	stock_1_2.set_self_modulate(player_1.ball_color)
+	stock_1_3.set_self_modulate(player_1.ball_color)
+	stock_2_1.set_self_modulate(player_2.ball_color)
+	stock_2_2.set_self_modulate(player_2.ball_color)
+	stock_2_3.set_self_modulate(player_2.ball_color)
+	player_1_label.add_color_override("font_color", player_1.ball_color)
+	player_2_label.add_color_override("font_color", player_2.ball_color)
 	pass # Replace with function body.
 
 
@@ -30,8 +41,6 @@ func _process(delta):
 	if damage_1 != damage_1_prev:
 		damage_1_prev = damage_1
 		#label_1.
-	label_1.set_text("%d%%" % player_1.damage)
-	label_2.set_text("%d%%" % player_2.damage)
 	
 	match player_1.stock: # I am so sorry again
 		3:
@@ -50,7 +59,6 @@ func _process(delta):
 			stock_1_1.hide()
 			stock_1_2.hide()
 			stock_1_3.hide()
-			label_1.hide()
 			
 	match player_2.stock:
 		3:
@@ -69,6 +77,5 @@ func _process(delta):
 			stock_2_1.hide()
 			stock_2_2.hide()
 			stock_2_3.hide()
-			label_2.hide()
 	
 	#label_1.set_self_modulate(Color(1 - (player_1.damage / 255), 1 - (player_1.damage / 128), 1 - (player_1.damage / 128)))

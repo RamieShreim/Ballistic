@@ -26,6 +26,7 @@ const DASH_SPEED: int = 32000
 const parts_dash = preload("res://Instances/Particles/PartsDash.tscn")
 const burst_player = preload("res://Instances/System/SoundBurst.tscn")
 const sound_bounce = preload("res://Sounds/Bounce.ogg")
+const sound_hit = preload("res://Sounds/hit_effect.wav")
 const part_mat_2 = preload("res://Instances/Particles/Player2Death.tres")
 
 onready var spr = $Sprite
@@ -128,6 +129,7 @@ func input(delta):
 
 
 func dash(delta):
+	$SoundDash.play()
 	var parts = parts_dash.instance()
 	parts.set_position(get_position())
 	parts.set_emitting(true)
@@ -193,6 +195,10 @@ func _on_Player_body_entered(body):
 #					body.linear_velocity.x += body.damage * dash_knockback
 #					body.linear_velocity.y += body.damage * dash_knockback
 			body.get_node("PartsHit").set_emitting(true)
+			var sound = burst_player.instance()
+			sound.set_stream(sound_hit)
+			sound.set_volume_db(4)
+			get_tree().get_root().add_child(sound)
 		else:
 			if linear_velocity > body.linear_velocity:
 #				body.damage += 10
@@ -218,6 +224,10 @@ func _on_Player_body_entered(body):
 #						body.linear_velocity.x += body.damage * dash_knockback
 #						body.linear_velocity.y += body.damage * dash_knockback
 				body.get_node("PartsHit").set_emitting(true)
+				var sound = burst_player.instance()
+				sound.set_stream(sound_hit)
+				sound.set_volume_db(4)
+				get_tree().get_root().add_child(sound)
 			elif linear_velocity < body.linear_velocity:
 #				damage += 10
 #				match dash_dir:
@@ -242,6 +252,10 @@ func _on_Player_body_entered(body):
 #						linear_velocity.x += damage * dash_knockback
 #						linear_velocity.y += damage * dash_knockback
 				get_node("PartsHit").set_emitting(true)
+				var sound = burst_player.instance()
+				sound.set_stream(sound_hit)
+				sound.set_volume_db(4)
+				get_tree().get_root().add_child(sound)
 #		can_hit = false
 		#body.can_hit = false
 		#$TimerHit.start()

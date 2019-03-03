@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Forest.png" type="Texture" id=1]
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=3]
-[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/forestfloor.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/forstplatform.png" type="Texture" id=5]
+[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -11,25 +13,28 @@ extents = Vector2( 67.6183, 9.49109 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
-extents = Vector2( 101.131, 15.5424 )
+extents = Vector2( 88.4982, 15.8658 )
 
 [node name="Scene" type="Node2D"]
 position = Vector2( 2.17847, 0.268913 )
 
-[node name="wood texture background" type="Sprite" parent="."]
+[node name="forestbackground" type="Sprite" parent="."]
 modulate = Color( 1, 0.8, 0.576471, 0.552941 )
 position = Vector2( 500, 335.039 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+offset = Vector2( 20, -15 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Player1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 286.728, 394.738 )
+position = Vector2( 286.822, 394.731 )
+ball_color = Color( 1, 0, 0, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 729.199, 398.989 )
+ball_color = Color( 0.521569, 0, 1, 1 )
 player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -37,9 +42,9 @@ position = Vector2( 30.5907, 107.811 )
 anchor_mode = 0
 current = true
 process_mode = 0
-limit_left = -500
-limit_top = -300
-limit_right = 1200
+limit_left = -200
+limit_top = -100
+limit_right = 1300
 limit_bottom = 700
 limit_smoothed = true
 smoothing_enabled = true
@@ -55,14 +60,20 @@ position = Vector2( 1037.49, -294.726 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2( -1285.02, 439.652 )
+position = Vector2( -1262.6, 439.481 )
+scale = Vector2( 0.887738, 0.995317 )
 color = Color( 0.0311279, 0.199219, 0.100728, 1 )
 texture_offset = Vector2( 500, 500 )
-polygon = PoolVector2Array( -100.378, -18.4675, 577.742, -19.3953, 469.674, 55.3522, -16.3054, 55.3522 )
+polygon = PoolVector2Array( -100.378, -18.4675, 572.579, -15.3394, 573.115, 19.4479, 573.745, 60.3382, -101.572, 62.9036 )
+
+[node name="forestfloor" type="Sprite" parent="StaticBody2D/CollisionShape2D/Polygon2D"]
+position = Vector2( 236.087, 23.061 )
+scale = Vector2( 1.12646, 1.00471 )
+texture = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 0, -0.630249 )
-polygon = PoolVector2Array( 323.892, 127.966, -349.373, 127.966, -266.343, 201.068, 221.91, 201.068 )
+polygon = PoolVector2Array( 281.894, 128.683, -315.277, 128.683, -315.277, 206.828, 281.894, 206.828 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -72,24 +83,33 @@ position = Vector2( -300, -50 )
 shape = SubResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D2"]
-position = Vector2( 99.0956, 18.6916 )
-scale = Vector2( 1.0068, 0.909091 )
-color = Color( 0.627451, 0.45098, 0, 1 )
+position = Vector2( 86.6604, 17.9933 )
+scale = Vector2( 0.940618, 0.909092 )
+texture = ExtResource( 5 )
 polygon = PoolVector2Array( 2.03784, -3.36264, -198.446, -3.36264, -198.429, -37.4898, 2.03784, -37.4558 )
+
+[node name="forstplatform" type="Sprite" parent="StaticBody2D/CollisionShape2D2"]
+position = Vector2( -4.38063, 0.196017 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 270, -50 )
 shape = SubResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D3"]
-position = Vector2( 95.1811, 17.06 )
-scale = Vector2( 1.00676, 0.980393 )
+position = Vector2( 95.6521, 17.0601 )
+scale = Vector2( 0.937628, 0.980395 )
 color = Color( 0.627451, 0.45098, 0, 1 )
-polygon = PoolVector2Array( 6.42834, -1.6514, -195.026, -1.65143, -195.219, -33.0676, 6.81342, -32.8699 )
+polygon = PoolVector2Array( 6.42834, -1.6514, -192.505, -2.24295, -193.25, -33.5842, 5.60931, -34.2965 )
+
+[node name="forstplatform" type="Sprite" parent="StaticBody2D/CollisionShape2D3/Polygon2D"]
+position = Vector2( -94.9389, -18.2697 )
+scale = Vector2( 1.05799, 1.06678 )
+texture = ExtResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 6 )]
 margin_left = 200.0
 margin_top = 425.0
 margin_right = 900.0

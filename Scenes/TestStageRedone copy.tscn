@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/wood texture background.jpg" type="Texture" id=1]
-[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/woodstage.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/woodstage-export.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/movingplatform1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=6]
-[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/deathzone gradient.png" type="Texture" id=2]
+[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/woodstage.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/woodstage-export.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/movingplatform1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sounds/ballisticsong.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -24,13 +26,25 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 286.728, 394.738 )
-ball_color = Color( 0.615686, 1, 0.301961, 1 )
+[node name="deathzonesprt" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.572549 )
+position = Vector2( 326.75, 444.73 )
+scale = Vector2( 24.8362, 3.82961 )
+texture = ExtResource( 2 )
 
-[node name="Player2" parent="." instance=ExtResource( 2 )]
+[node name="deathzonesprt2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.572549 )
+position = Vector2( 345.795, 524.992 )
+scale = Vector2( 24.8362, 3.82961 )
+texture = ExtResource( 2 )
+
+[node name="Player1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 286.728, 394.738 )
+ball_color = Color( 0.964706, 0.0117647, 0.192157, 1 )
+
+[node name="Player2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 698.822, 398.731 )
-ball_color = Color( 1, 0, 0.329412, 1 )
+ball_color = Color( 0.321569, 0.866667, 0.0705882, 1 )
 player_two = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -61,14 +75,14 @@ __meta__ = {
 modulate = Color( 0, 0, 0, 0.262745 )
 position = Vector2( -1.61347, 385.851 )
 scale = Vector2( 1.00741, 1.00741 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Mainstage" type="Sprite" parent="StaticBody2D"]
 position = Vector2( -10.6329, 374.381 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -80,7 +94,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Platform" parent="." instance=ExtResource( 5 )]
+[node name="Platform" parent="." instance=ExtResource( 6 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 30.5907, 107.811 )
@@ -94,12 +108,12 @@ limit_bottom = 600
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_drag_margin = true
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 tracking_list = [ NodePath("../Player1"), NodePath("../Player2") ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 8 )]
 anchor_left = 0.35
 anchor_right = 0.56
 anchor_bottom = 0.4
@@ -107,4 +121,9 @@ margin_left = -116.0
 margin_top = 420.0
 margin_right = 584.0
 margin_bottom = 520.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -8.583
+autoplay = true
 

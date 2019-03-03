@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ballisticsong.wav-1cf5bd37e14edbebf40051826177d404.sample"
+
+[deps]
+
+source_file="res://Sounds/ballisticsong.wav"
+dest_files=[ "res://.import/ballisticsong.wav-1cf5bd37e14edbebf40051826177d404.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

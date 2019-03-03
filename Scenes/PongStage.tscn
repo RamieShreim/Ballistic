@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/scanlines.png" type="Texture" id=4]
+[ext_resource path="res://Sounds/ballisticsong.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -197,11 +198,11 @@ __meta__ = {
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 426.925, 392.051 )
-ball_color = Color( 1, 0.984314, 0, 1 )
+ball_color = Color( 0, 1, 0.764706, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 630.821, 388.731 )
-ball_color = Color( 0.360784, 1, 0.360784, 1 )
+ball_color = Color( 0, 1, 0.764706, 1 )
 player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -226,9 +227,18 @@ anchor_left = 0.35
 anchor_right = 0.56
 anchor_bottom = 0.4
 margin_left = -140.207
-margin_top = 429.296
+margin_top = 430.493
 margin_right = 559.793
-margin_bottom = 529.296
+margin_bottom = 530.493
+
+[node name="scanlines" type="Sprite" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.478431 )
+position = Vector2( 518.259, 209.598 )
+scale = Vector2( 1.79978, 1 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="paddle left" type="RigidBody2D" parent="."]
 position = Vector2( 200, -97.239 )
@@ -278,12 +288,8 @@ margin_right = 950.332
 margin_bottom = 366.915
 color = Color( 0.215686, 0.784314, 0.372549, 1 )
 
-[node name="scanlines" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.478431 )
-position = Vector2( 516.081, 209.329 )
-scale = Vector2( 1.79978, 1 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="pongstagemusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = -7.228
+autoplay = true
 
