@@ -3,7 +3,9 @@ extends Node2D
 var code_typing: bool = false
 var chars: float = 0
 
-onready var code = $CanvasLayer/Code
+const bullet = preload("res://Instances/Bullet.tscn")
+
+onready var code = $Code
 
 func _ready():
 	randomize()
@@ -21,6 +23,21 @@ func _process(delta):
 		code.modulate.a = max(code.modulate.a - 3 * delta, 0)
 
 
+func spawn_bullet():
+	var bullet_i = bullet.instance()
+	if randf() < 0.5:
+		bullet_i.dir = 1
+		bullet_i.position.x = -10
+	else:
+		bullet_i.dir = -1
+		bullet_i.position.x = 1310
+	
+	bullet_i.position.y = rand_range(430, 614)
+	bullet_i.speed = rand_range(120, 240)
+	
+	get_tree().get_root().add_child(bullet_i)
+
+
 func _on_TimerEvents_timeout():
 	match int(rand_range(0, 5)):
 		0: # Wall
@@ -28,6 +45,9 @@ func _on_TimerEvents_timeout():
 			$TimerWall.start()
 		1: # Bullets
 			code.set_text("#define BULLET_1\n#define BULLET_2\n#define BULLET_3")
+			$TimerBullet1.start()
+			$TimerBullet2.start()
+			$TimerBullet3.start()
 		2: # Block
 			code.set_text("#define BLOCK")
 			$TimerBlock.start()
@@ -35,19 +55,7 @@ func _on_TimerEvents_timeout():
 			code.set_text("#undef CENTER")
 			$TimerCenter.start()
 		4: # Comment
-			match int(rand_range(0, 5)):
-				0:
-					code.set_text("// HELLO THERE!!")
-				1:
-					code.set_text("// This is very exciting.")
-				2:
-					code.set_text("// Bounce! Bounce! Bounce!")
-				3:
-					code.set_text("std::printf(\"%s\", myDisappointment);")
-				4:
-					code.set_text("// You're starting to bore me.")
-			
-	#$Code.set_text("#define BLOCK")
+			code.set_text("#warning \"You're starting to bore me.\"")
 	
 	code_typing = true
 
@@ -72,5 +80,20 @@ func _on_TimerCenter_timeout():
 	$TimerFadeCode.start()
 
 
+# I AM SO SORRY
+func _on_TimerBullet1_timeout():
+	spawn_bullet()
+
+
+func _on_TimerBullet2_timeout():
+	spawn_bullet()
+
+
+func _on_TimerBullet3_timeout():
+	spawn_bullet()
+	$TimerFadeCode.start()
+
+
 func _on_TimerFadeCode_timeout():
 	code_typing = false
+	$TimerEvents.start()

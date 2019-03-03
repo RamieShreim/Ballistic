@@ -3,9 +3,9 @@
 [ext_resource path="res://Scripts/CPPStage.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Binary.png" type="Texture" id=2]
 [ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
-[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=5]
-[ext_resource path="res://PIXEARG.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://PIXEARG.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=5]
+[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 38 ), Vector2( 0, -1090 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 
 extents = Vector2( 161, 62 )
 
@@ -40,7 +40,7 @@ extents = Vector2( 71, 71 )
 [sub_resource type="DynamicFont" id=5]
 
 size = 32
-font_data = ExtResource( 6 )
+font_data = ExtResource( 4 )
 
 [node name="Scene" type="Node2D"]
 position = Vector2( 0, 132 )
@@ -218,7 +218,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Center"]
 position = Vector2( 160, 60 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -294,6 +294,16 @@ position = Vector2( 850, 458 )
 ball_color = Color( 0, 0.694118, 1, 1 )
 player_two = true
 
+[node name="Code" type="Label" parent="."]
+margin_left = 457.0
+margin_top = 245.0
+margin_right = 833.0
+margin_bottom = 289.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "#define PLATFORM"
+percent_visible = 0.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 13.2229, 73.2393 )
 anchor_mode = 0
@@ -302,11 +312,11 @@ process_mode = 0
 limit_left = 0
 limit_top = 0
 limit_right = 1285
-limit_bottom = 780
+limit_bottom = 840
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_drag_margin = true
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 tracking_list = [ NodePath("../Player1"), NodePath("../Player2") ]
 
 [node name="TimerEvents" type="Timer" parent="."]
@@ -326,26 +336,31 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="TimerBullet1" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="TimerBullet2" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="TimerBullet3" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
 [node name="TimerFadeCode" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 5 )]
-
-[node name="Code" type="Label" parent="CanvasLayer"]
-margin_left = 331.0
-margin_top = 143.0
-margin_right = 707.0
-margin_bottom = 187.0
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_color = Color( 0, 1, 0, 1 )
-text = "#define PLATFORM"
-percent_visible = 0.0
+[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 6 )]
 
 [connection signal="timeout" from="TimerEvents" to="." method="_on_TimerEvents_timeout"]
 [connection signal="timeout" from="TimerWall" to="." method="_on_TimerWall_timeout"]
 [connection signal="timeout" from="TimerBlock" to="." method="_on_TimerBlock_timeout"]
 [connection signal="timeout" from="TimerCenter" to="." method="_on_TimerCenter_timeout"]
+[connection signal="timeout" from="TimerBullet1" to="." method="_on_TimerBullet1_timeout"]
+[connection signal="timeout" from="TimerBullet2" to="." method="_on_TimerBullet2_timeout"]
+[connection signal="timeout" from="TimerBullet3" to="." method="_on_TimerBullet3_timeout"]
 [connection signal="timeout" from="TimerFadeCode" to="." method="_on_TimerFadeCode_timeout"]
