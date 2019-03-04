@@ -197,11 +197,11 @@ __meta__ = {
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 426.925, 392.051 )
-ball_color = Color( 0, 1, 0.764706, 1 )
+ball_color = Color( 0.901961, 0.0941176, 0.529412, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 630.821, 388.731 )
-ball_color = Color( 0, 1, 0.764706, 1 )
+ball_color = Color( 0.247059, 0.054902, 0.92549, 1 )
 player_two = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -246,7 +246,7 @@ gravity_scale = 0.0
 
 [node name="paddle left animation" type="AnimationPlayer" parent="paddle left"]
 autoplay = "Paddle left"
-playback_speed = 2.0
+playback_speed = 3.14
 "anims/Paddle left" = SubResource( 2 )
 
 [node name="paddle left collision" type="CollisionShape2D" parent="paddle left"]
@@ -273,7 +273,7 @@ gravity_scale = 0.0
 
 [node name="paddle right animation" type="AnimationPlayer" parent="paddle right"]
 autoplay = "Paddle left"
-playback_speed = 2.0
+playback_speed = 3.14
 "anims/Paddle left" = SubResource( 4 )
 
 [node name="paddle right collision" type="CollisionShape2D" parent="paddle right"]
