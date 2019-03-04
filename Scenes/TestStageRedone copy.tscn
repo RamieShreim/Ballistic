@@ -39,16 +39,16 @@ scale = Vector2( 24.8362, 3.82961 )
 texture = ExtResource( 2 )
 
 [node name="Player1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 286.728, 394.738 )
+position = Vector2( 286.728, 328.738 )
 ball_color = Color( 0.964706, 0.0117647, 0.192157, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 698.822, 398.731 )
+position = Vector2( 698.822, 332.731 )
 ball_color = Color( 0.321569, 0.866667, 0.0705882, 1 )
 player_two = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 517.834, 319.718 )
+position = Vector2( 517.834, 253.718 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1039.54, -296.777 )
@@ -102,9 +102,9 @@ anchor_mode = 0
 current = true
 process_mode = 0
 limit_left = -100
-limit_top = -200
+limit_top = -100
 limit_right = 1125
-limit_bottom = 600
+limit_bottom = 700
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_drag_margin = true

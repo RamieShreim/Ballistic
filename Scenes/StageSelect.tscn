@@ -89,7 +89,7 @@ texture = ExtResource( 2 )
 
 [node name="gradient" type="Sprite" parent="."]
 modulate = Color( 0.670588, 0.0313726, 0.556863, 0.721569 )
-position = Vector2( 555.345, 220.592 )
+position = Vector2( 555.833, 220.104 )
 scale = Vector2( 11.5771, 11.0398 )
 texture = ExtResource( 3 )
 
@@ -106,7 +106,7 @@ custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 7 )
-text = "WOOD SHOP"
+text = "WOODSHOP"
 script = ExtResource( 4 )
 scene = ExtResource( 5 )
 
@@ -127,7 +127,7 @@ custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 7 )
-text = "BLIPLISTIC"
+text = "MAGNAVOX"
 script = ExtResource( 4 )
 scene = ExtResource( 6 )
 
@@ -177,9 +177,9 @@ scene = ExtResource( 8 )
 modulate = Color( 0.254902, 0.733333, 0.913725, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -363.0
+margin_left = -363.488
 margin_top = 65.0
-margin_right = 364.0
+margin_right = 363.512
 margin_bottom = 268.0
 custom_fonts/font = SubResource( 8 )
 text = "STAGE SELECT
