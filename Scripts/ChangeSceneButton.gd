@@ -22,8 +22,10 @@ func _ready():
 func pressed():
 	if get_tree().get_current_scene().get_name() == "stage selection":
 		#MatchStart.set_position(Vector2(480, 270))
+		MatchStart.prog.show()
 		MatchStart.player_move = false
 		MatchStart.get_node("AnimationPlayer").play("Fade Ready")
 		MatchStart.get_node("SoundMatchStart").play()
+		MatchStart.get_node("TimerStart").start()
 		
 	get_tree().change_scene_to(scene)

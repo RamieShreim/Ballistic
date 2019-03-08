@@ -4,15 +4,18 @@ var player_move: bool = false
 
 onready var ready = $CanvasLayer/Ready
 onready var bounce = $CanvasLayer/Bounce
+onready var prog = $CanvasLayer/ProgressBar
+onready var timer_start = $TimerStart
 
 func _ready():
 	pass
 
 func _process(delta):
-	pass
+	prog.set_value(timer_start.get_time_left() / 1.45)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Fade Ready":
 		player_move = true
+		prog.hide()
 		bounce.show()
 		$AnimationPlayer.play("Fade Bounce")

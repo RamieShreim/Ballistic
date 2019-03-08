@@ -1,9 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/MatchStart.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/READY.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/BOUNCE.png" type="Texture" id=3]
 [ext_resource path="res://Sounds/VO_READYBOUNCE.ogg" type="AudioStream" id=4]
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+bg_color = Color( 0.121569, 1, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+shadow_size = 2
 
 [sub_resource type="Animation" id=2]
 
@@ -20,6 +29,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Bounce:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 3, 3 ) ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -52,8 +73,22 @@ texture = ExtResource( 2 )
 
 [node name="Bounce" type="Sprite" parent="CanvasLayer"]
 visible = false
+modulate = Color( 1, 1, 1, 0.111111 )
 position = Vector2( 480, 200 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+visible = false
+margin_left = 146.0
+margin_top = 215.0
+margin_right = 500.0
+margin_bottom = 229.0
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Fade Bounce" = SubResource( 2 )
@@ -62,7 +97,6 @@ texture = ExtResource( 3 )
 [node name="TimerStart" type="Timer" parent="."]
 wait_time = 1.45
 one_shot = true
-autostart = true
 
 [node name="TimerFade" type="Timer" parent="."]
 one_shot = true
