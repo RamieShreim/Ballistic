@@ -1,23 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/Ball.png" type="Texture" id=1]
 [ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/ChangeSceneButton.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/StageSelect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sounds/VO_TITLE.ogg" type="AudioStream" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 
 size = 96
 outline_size = 5
 outline_color = Color( 0.568627, 0.129412, 0.129412, 1 )
-use_mipmaps = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 
 size = 60
 outline_size = 2
 outline_color = Color( 0.568627, 0.129412, 0.129412, 1 )
+use_mipmaps = false
+use_filter = false
 font_data = ExtResource( 2 )
 
 [node name="TitleScreen" type="Control"]
@@ -60,7 +62,7 @@ stretch_mode = 1
 [node name="Title" type="Label" parent="Menu/Logo"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.905882, 0.12549, 0, 1 )
 custom_constants/shadow_offset_y = 5
@@ -95,7 +97,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
@@ -114,7 +116,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
@@ -133,7 +135,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
@@ -150,10 +152,14 @@ flat = true
 [node name="Label" type="Label" parent="Menu/Center Row/Buttons/Quit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Quit Game"
 align = 1
+
+[node name="BALLISTIC" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 

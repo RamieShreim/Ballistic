@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/VO_READYBOUNCE.ogg-01f108768ee2cbe569d008878b615695.oggstr"
+
+[deps]
+
+source_file="res://Sounds/VO_READYBOUNCE.ogg"
+dest_files=[ "res://.import/VO_READYBOUNCE.ogg-01f108768ee2cbe569d008878b615695.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

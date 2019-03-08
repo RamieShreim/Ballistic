@@ -61,7 +61,7 @@ func _physics_process(delta):
 		
 	spr.scale.y = min(spr.scale.y + 1 * delta, 1)
 	
-	if control:
+	if control and MatchStart.player_move:
 		input(delta)
 	
 	if dead:
