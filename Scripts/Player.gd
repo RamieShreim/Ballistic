@@ -87,6 +87,7 @@ func _physics_process(delta):
 		if stock > 0:
 			$TimerRespawn.start()
 		else:
+			MatchStart.winner = 1 if temp_add == "" else 0
 			$TimerRestart.start()
 
 
@@ -273,7 +274,9 @@ func _on_TimerRespawn_timeout():
 
 
 func _on_TimerRestart_timeout():
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	MatchStart.play_winsound()
+	get_tree().change_scene("res://Scenes/Ending.tscn")
 
 
 func _on_TimerHit_timeout():

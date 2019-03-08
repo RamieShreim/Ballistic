@@ -1,22 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MatchStart.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/READY.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/BOUNCE.png" type="Texture" id=3]
 [ext_resource path="res://Sounds/VO_READYBOUNCE.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/VO_P1WIN.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/VO_P2WIN.ogg" type="AudioStream" id=6]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 
 bg_color = Color( 0.121569, 1, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=2]
 
 bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
 shadow_size = 2
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource_name = "Fade Bounce"
 length = 1.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Bounce:modulate")
@@ -43,9 +44,8 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 3, 3 ) ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=4]
 
-resource_name = "Fade Ready"
 length = 1.45
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Ready:modulate")
@@ -84,15 +84,15 @@ margin_left = 146.0
 margin_top = 215.0
 margin_right = 500.0
 margin_bottom = 229.0
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 max_value = 1.0
 value = 1.0
 percent_visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Fade Bounce" = SubResource( 2 )
-"anims/Fade Ready" = SubResource( 1 )
+"anims/Fade Bounce" = SubResource( 3 )
+"anims/Fade Ready" = SubResource( 4 )
 
 [node name="TimerStart" type="Timer" parent="."]
 wait_time = 1.45
@@ -103,5 +103,11 @@ one_shot = true
 
 [node name="SoundMatchStart" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="P1Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="P2Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
