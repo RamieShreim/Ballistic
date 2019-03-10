@@ -104,6 +104,12 @@ one_shot = true
 explosiveness = 1.0
 process_material = ExtResource( 6 )
 
+[node name="Arrow" type="Polygon2D" parent="."]
+rotation = 1.5708
+scale = Vector2( 2, 2 )
+offset = Vector2( 0, 28.5 )
+polygon = PoolVector2Array( 0, -60, -10, -49, 10, -49 )
+
 [node name="SoundDash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -4.0
@@ -125,6 +131,10 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
+[node name="TimerRespawnHB" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="TimerRestart" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -133,4 +143,5 @@ one_shot = true
 [connection signal="timeout" from="TimerDash" to="." method="_on_TimerDash_timeout"]
 [connection signal="timeout" from="TimerHit" to="." method="_on_TimerHit_timeout"]
 [connection signal="timeout" from="TimerRespawn" to="." method="_on_TimerRespawn_timeout"]
+[connection signal="timeout" from="TimerRespawnHB" to="." method="_on_TimerRespawnHB_timeout"]
 [connection signal="timeout" from="TimerRestart" to="." method="_on_TimerRestart_timeout"]
