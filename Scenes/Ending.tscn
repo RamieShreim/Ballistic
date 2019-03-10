@@ -1,18 +1,21 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/WinLabel.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/EndingMenu/Restart.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/StageSelect.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/MainMenuButton.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/EndingMenu/QuitButton.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/dotted bg.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/deathzone gradient.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/white grad.png" type="Texture" id=3]
+[ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scripts/WinLabel.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/EndingMenu/Restart.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/StageSelect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/MainMenuButton.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/EndingMenu/QuitButton.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 60
 outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -27,7 +30,7 @@ font_data = ExtResource( 1 )
 
 size = 36
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -42,10 +45,36 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="dotbckgrd" type="Sprite" parent="."]
+modulate = Color( 0.211765, 0.247059, 0.364706, 0.27451 )
+position = Vector2( 611.912, 260.178 )
+scale = Vector2( 1.22526, 1.22526 )
+texture = ExtResource( 1 )
+
+[node name="gradient" type="Sprite" parent="dotbckgrd"]
+position = Vector2( -68.0621, 55.9277 )
+scale = Vector2( 9.51969, 3.64727 )
+texture = ExtResource( 2 )
+
+[node name="gradient2" type="Sprite" parent="dotbckgrd"]
+position = Vector2( -68.0621, 55.9277 )
+scale = Vector2( 9.51969, 3.64727 )
+texture = ExtResource( 2 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -59.0
+margin_top = -149.0
+margin_right = 138.0
+margin_bottom = 77.0
 color = Color( 0, 0, 0, 0.278431 )
+
+[node name="gradient3" type="Sprite" parent="."]
+modulate = Color( 0.0941176, 0.913725, 0.835294, 0.152941 )
+position = Vector2( 541.47, 140.963 )
+scale = Vector2( 12.8738, -4.77527 )
+texture = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_left = 0.5
@@ -62,7 +91,7 @@ margin_bottom = 179.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_constants/shadow_offset_y = 3
-script = ExtResource( 2 )
+script = ExtResource( 5 )
 
 [node name="StageSelectButton" type="Button" parent="."]
 margin_left = 368.219
@@ -75,8 +104,8 @@ custom_styles/normal = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_hover = Color( 0.87451, 1, 0, 1 )
 text = "Stage Select"
-script = ExtResource( 3 )
-scene_to_change_to = ExtResource( 4 )
+script = ExtResource( 6 )
+scene_to_change_to = ExtResource( 7 )
 
 [node name="MainMenuButton" type="Button" parent="."]
 margin_left = 369.58
@@ -89,7 +118,7 @@ custom_styles/normal = SubResource( 8 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_hover = Color( 0.0470588, 0.529412, 1, 1 )
 text = "Main Menu"
-script = ExtResource( 5 )
+script = ExtResource( 8 )
 
 [node name="QuitButton" type="Button" parent="."]
 margin_left = 368.219
@@ -102,7 +131,7 @@ custom_styles/normal = SubResource( 8 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_hover = Color( 1, 0.0470588, 0.0470588, 1 )
 text = "Quit Game"
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 
 [connection signal="pressed" from="StageSelectButton" to="StageSelectButton" method="_on_Restart_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_MainMenuButton_pressed"]
