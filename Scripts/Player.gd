@@ -6,6 +6,7 @@ var temp_add: String = ""
 
 var control: bool = true
 var dead: bool = false
+var resp: bool = false
 
 enum {U, D, L, R, UL, UR, DL, DR}
 var dir: int = D
@@ -31,13 +32,16 @@ const part_mat_2 = preload("res://Instances/Particles/Player2Death.tres")
 
 onready var spr = $Sprite
 onready var cd_bar = $DashCD
+onready var arrow = $Arrow
 onready var camera = get_tree().get_root().get_node("Scene").get_node("Camera2D")
 
 
 func _ready():
+	arrow.hide()
 	cd_bar_hue_init = cd_bar.tint_progress.h
 	temp_add = "2" if player_two else "" # I am so sorry
 	spr.set_self_modulate(ball_color)
+	arrow.set_self_modulate(ball_color)
 	$PartsDie.set_process_material($PartsDie.get_process_material().duplicate())
 	$PartsDie.get_process_material().set_color(ball_color)
 
@@ -47,6 +51,29 @@ func _process(delta):
 	dash_cd_value = max(dash_cd_value - 1.7 * delta * 60, 0)
 	cd_bar.set_value(dash_cd_value)
 	cd_bar.tint_progress.h = max(cd_bar.tint_progress.h - 0.28 * delta, 0)
+	
+	# Respawn suspend
+	if resp:
+		linear_velocity = Vector2.ZERO
+		
+	# Control arrow
+	match dir:
+		U:
+			arrow.set_rotation_degrees(0)
+		UR:
+			arrow.set_rotation_degrees(45)
+		R:
+			arrow.set_rotation_degrees(90)
+		DR:
+			arrow.set_rotation_degrees(135)
+		D:
+			arrow.set_rotation_degrees(180)
+		DL:
+			arrow.set_rotation_degrees(225)
+		L:
+			arrow.set_rotation_degrees(270)
+		UL:
+			arrow.set_rotation_degrees(315)
 
 
 func _physics_process(delta):
@@ -159,6 +186,11 @@ func dash(delta):
 	cd_bar.tint_progress = Color(0.4, 1, 0)
 	cd_bar.show()
 	$TimerDash.start()
+	if resp:
+		$CollisionShape2D.set_disabled(false)
+		arrow.hide()
+		resp = false
+		$TimerRespawnHB.stop()
 
 
 func _on_TimerDash_timeout():
@@ -167,34 +199,8 @@ func _on_TimerDash_timeout():
 
 
 func _on_Player_body_entered(body):
-	if dash_cd and body.is_in_group("Player"):# and can_hit and body.can_hit:
-		#var magnitude = sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2))
-		#print(magnitude)
-		#print("OLD LINEAR VELOCITY: %d" % sqrt(pow(linear_velocity.x, daad2) + pow(linear_velocity.y, 2)))
-		#print("NEW LINEAR VELOCITY: %d" % sqrt(pow(linear_velocity.x, 2) + pow(linear_velocity.y, 2)))
+	if dash_cd and body.is_in_group("Player"):
 		if not body.dash_cd:
-#			body.damage += int(magnitude / 20)
-#			match dash_dir:
-#				U:
-#					body.linear_velocity.y -= body.damage * dash_knockback
-#				D:
-#					body.linear_velocity.y += body.damage * dash_knockback
-#				L:
-#					body.linear_velocity.x -= body.damage * dash_knockback
-#				R:
-#					body.linear_velocity.x += body.damage * dash_knockback
-#				UL:
-#					body.linear_velocity.x -= body.damage * dash_knockback
-#					body.linear_velocity.y -= body.damage * dash_knockback
-#				UR:
-#					body.linear_velocity.x += body.damage * dash_knockback
-#					body.linear_velocity.y -= body.damage * dash_knockback
-#				DL:
-#					body.linear_velocity.x -= body.damage * dash_knockback
-#					body.linear_velocity.y += body.damage * dash_knockback
-#				DR:
-#					body.linear_velocity.x += body.damage * dash_knockback
-#					body.linear_velocity.y += body.damage * dash_knockback
 			body.get_node("PartsHit").set_emitting(true)
 			var sound = burst_player.instance()
 			sound.set_stream(sound_hit)
@@ -202,82 +208,44 @@ func _on_Player_body_entered(body):
 			get_tree().get_root().add_child(sound)
 		else:
 			if linear_velocity > body.linear_velocity:
-#				body.damage += 10
-#				match dash_dir:
-#					U:
-#						body.linear_velocity.y -= body.damage * dash_knockback
-#					D:
-#						body.linear_velocity.y += body.damage * dash_knockback
-#					L:
-#						body.linear_velocity.x -= body.damage * dash_knockback
-#					R:
-#						body.linear_velocity.x += body.damage * dash_knockback
-#					UL:
-#						body.linear_velocity.x -= body.damage * dash_knockback
-#						body.linear_velocity.y -= body.damage * dash_knockback
-#					UR:
-#						body.linear_velocity.x += body.damage * dash_knockback
-#						body.linear_velocity.y -= body.damage * dash_knockback
-#					DL:
-#						body.linear_velocity.x -= body.damage * dash_knockback
-#						body.linear_velocity.y += body.damage * dash_knockback
-#					DR:
-#						body.linear_velocity.x += body.damage * dash_knockback
-#						body.linear_velocity.y += body.damage * dash_knockback
 				body.get_node("PartsHit").set_emitting(true)
 				var sound = burst_player.instance()
 				sound.set_stream(sound_hit)
 				sound.set_volume_db(4)
 				get_tree().get_root().add_child(sound)
 			elif linear_velocity < body.linear_velocity:
-#				damage += 10
-#				match dash_dir:
-#					U:
-#						linear_velocity.y -= damage * dash_knockback
-#					D:
-#						linear_velocity.y += damage * dash_knockback
-#					L:
-#						linear_velocity.x -= damage * dash_knockback
-#					R:
-#						linear_velocity.x += damage * dash_knockback
-#					UL:
-#						linear_velocity.x -= damage * dash_knockback
-#						linear_velocity.y -= damage * dash_knockback
-#					UR:
-#						linear_velocity.x += damage * dash_knockback
-#						linear_velocity.y -= damage * dash_knockback
-#					DL:
-#						linear_velocity.x -= damage * dash_knockback
-#						linear_velocity.y += damage * dash_knockback
-#					DR:
-#						linear_velocity.x += damage * dash_knockback
-#						linear_velocity.y += damage * dash_knockback
 				get_node("PartsHit").set_emitting(true)
 				var sound = burst_player.instance()
 				sound.set_stream(sound_hit)
 				sound.set_volume_db(4)
 				get_tree().get_root().add_child(sound)
-#		can_hit = false
-		#body.can_hit = false
-		#$TimerHit.start()
-		#body.get_node("TimerHit").start()
 
 
 func _on_TimerRespawn_timeout():
-	$CollisionShape2D.set_disabled(false)
+	arrow.show()
 	set_position(Vector2(600 if player_two else 440, 100))
 	$Sprite.modulate.a = 1
 	damage = 0
 	dead = false
+	resp = true
 	control = true
 	can_dash = true
+	$TimerRespawnHB.start()
+
+
+func _on_TimerRespawnHB_timeout():
+	$CollisionShape2D.set_disabled(false)
+	resp = false
+	arrow.hide()
 
 
 func _on_TimerRestart_timeout():
-	#get_tree().reload_current_scene()
 	MatchStart.play_winsound()
 	get_tree().change_scene("res://Scenes/Ending.tscn")
 
 
 func _on_TimerHit_timeout():
 	can_hit = true
+
+
+
