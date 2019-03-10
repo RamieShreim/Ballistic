@@ -94,7 +94,6 @@ texture = ExtResource( 7 )
 modulate = Color( 0, 0, 0, 0.396078 )
 show_behind_parent = true
 position = Vector2( 5.17677, 3.57021 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 7 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
