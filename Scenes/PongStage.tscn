@@ -75,7 +75,6 @@ tracks/1/keys = {
 }
 
 [node name="Scene" type="Node2D"]
-editor/display_folded = true
 position = Vector2( 2.17847, 0.268913 )
 
 [node name="background" type="ColorRect" parent="."]
@@ -288,7 +287,7 @@ margin_right = 950.332
 margin_bottom = 366.915
 color = Color( 0.215686, 0.784314, 0.372549, 1 )
 
-[node name="pongstagemusic" type="AudioStreamPlayer2D" parent="."]
+[node name="pongstagemusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -7.228
 autoplay = true

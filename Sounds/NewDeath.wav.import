@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NewDeath.wav-ca1f3c64f73a5f0ec38bc7e101ae4197.sample"
+
+[deps]
+
+source_file="res://Sounds/NewDeath.wav"
+dest_files=[ "res://.import/NewDeath.wav-ca1f3c64f73a5f0ec38bc7e101ae4197.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

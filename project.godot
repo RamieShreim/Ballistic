@@ -19,6 +19,10 @@ config/name="Ballistic"
 run/main_scene="res://Scenes/PongStage.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+MatchStart="*res://Instances/MatchStart.tscn"
+
 [display]
 
 window/size/width=960
