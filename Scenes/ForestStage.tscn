@@ -47,11 +47,11 @@ scale = Vector2( 2.3767, 2.29609 )
 texture = ExtResource( 4 )
 
 [node name="Player1" parent="." instance=ExtResource( 5 )]
-position = Vector2( 411.822, 393.769 )
+position = Vector2( 410.453, 192.689 )
 ball_color = Color( 1, 0, 0, 1 )
 
 [node name="Player2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 596.552, 393.731 )
+position = Vector2( 595.183, 192.651 )
 ball_color = Color( 0.521569, 0, 1, 1 )
 player_two = true
 
