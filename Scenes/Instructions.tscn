@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/key_arrows.png" type="Texture" id=2]
+[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -51,7 +52,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="TextureRect" type="TextureRect" parent="Margin"]
+margin_left = -64.0
+margin_top = 100.0
+margin_right = 128.0
+margin_bottom = 356.0
+texture = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 652.21, 361.474 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -62,7 +70,7 @@ margin_left = 532.105
 margin_top = 254.737
 margin_right = 550.105
 margin_bottom = 503.737
-color = Color( 0.317647, 0.360784, 0.498039, 1 )
+color = Color( 0.345098, 0.231373, 0.807843, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 541.21, 380.474 )
@@ -76,7 +84,7 @@ margin_top = 254.737
 margin_right = 938.105
 margin_bottom = 624.737
 rect_rotation = 90.0
-color = Color( 0.317647, 0.360784, 0.498039, 1 )
+color = Color( 0.345098, 0.231373, 0.807843, 1 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2( 734.21, 263.474 )
@@ -91,7 +99,7 @@ margin_top = 485.737
 margin_right = 938.105
 margin_bottom = 855.737
 rect_rotation = 90.0
-color = Color( 0.317647, 0.360784, 0.498039, 1 )
+color = Color( 0.345098, 0.231373, 0.807843, 1 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2( 734.21, 494.474 )
@@ -105,7 +113,7 @@ margin_left = 920.105
 margin_top = 254.737
 margin_right = 938.105
 margin_bottom = 503.737
-color = Color( 0.317647, 0.360784, 0.498039, 1 )
+color = Color( 0.345098, 0.231373, 0.807843, 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D4"]
 position = Vector2( 929.21, 380.474 )
