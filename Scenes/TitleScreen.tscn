@@ -8,7 +8,7 @@
 [sub_resource type="DynamicFont" id=2]
 
 size = 96
-outline_size = 5
+outline_size = 9
 outline_color = Color( 0.568627, 0.129412, 0.129412, 1 )
 use_mipmaps = true
 font_data = ExtResource( 2 )
@@ -16,7 +16,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=1]
 
 size = 60
-outline_size = 2
+outline_size = 5
 outline_color = Color( 0.568627, 0.129412, 0.129412, 1 )
 font_data = ExtResource( 2 )
 
@@ -32,7 +32,7 @@ margin_bottom = -2.10522
 margin_left = 96.0
 margin_top = 32.0
 margin_right = 864.0
-margin_bottom = 476.0
+margin_bottom = 508.0
 
 [node name="Logo" type="TextureRect" parent="Menu"]
 margin_right = 768.0
@@ -71,20 +71,21 @@ valign = 1
 [node name="Center Row" type="HBoxContainer" parent="Menu"]
 margin_top = 164.0
 margin_right = 768.0
-margin_bottom = 465.0
+margin_bottom = 476.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/Center Row"]
 margin_right = 768.0
-margin_bottom = 301.0
+margin_bottom = 312.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 15
 alignment = 2
 
 [node name="Play" type="Button" parent="Menu/Center Row/Buttons"]
+margin_top = 11.0
 margin_right = 768.0
-margin_bottom = 64.0
+margin_bottom = 75.0
 rect_min_size = Vector2( 0, 64 )
 flat = true
 script = ExtResource( 3 )
@@ -96,16 +97,16 @@ anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 0.941176, 0.941176, 1 )
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Stage Select"
 align = 1
 
 [node name="Instructions" type="Button" parent="Menu/Center Row/Buttons"]
-margin_top = 79.0
+margin_top = 90.0
 margin_right = 768.0
-margin_bottom = 143.0
+margin_bottom = 154.0
 rect_min_size = Vector2( 0, 64 )
 flat = true
 
@@ -115,16 +116,16 @@ anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 0.941176, 0.941176, 1 )
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Instructions"
 align = 1
 
 [node name="Credits" type="Button" parent="Menu/Center Row/Buttons"]
-margin_top = 158.0
+margin_top = 169.0
 margin_right = 768.0
-margin_bottom = 222.0
+margin_bottom = 233.0
 rect_min_size = Vector2( 0, 64 )
 flat = true
 
@@ -134,16 +135,16 @@ anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 0.941176, 0.941176, 1 )
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Credits"
 align = 1
 
 [node name="Quit" type="Button" parent="Menu/Center Row/Buttons"]
-margin_top = 237.0
+margin_top = 248.0
 margin_right = 768.0
-margin_bottom = 301.0
+margin_bottom = 312.0
 rect_min_size = Vector2( 0, 64 )
 flat = true
 
@@ -151,7 +152,7 @@ flat = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 0.941176, 0.941176, 1 )
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Quit Game"
