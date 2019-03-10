@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/ForestStage.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Forest.png" type="Texture" id=2]
-[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/ForestFloor2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/forstplatform.png" type="Texture" id=6]
-[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Sounds/ForestSong.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sprites/deathzone gradient.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/trunk.png" type="Texture" id=4]
+[ext_resource path="res://Instances/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/ForestFloor2Rt.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/forstplatform.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/forestfloor1Rt.png" type="Texture" id=9]
+[ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sounds/ForestSong.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -22,7 +25,7 @@ position = Vector2( 2.17847, 0.268913 )
 script = ExtResource( 1 )
 
 [node name="forestbackground" type="Sprite" parent="."]
-modulate = Color( 1, 0.8, 0.576471, 0.552941 )
+modulate = Color( 0.756863, 1, 0.45098, 0.32549 )
 position = Vector2( 500, 335.039 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
@@ -31,11 +34,23 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player1" parent="." instance=ExtResource( 3 )]
+[node name="forest gradient" type="Sprite" parent="forestbackground"]
+modulate = Color( 0.65625, 0.243448, 0.243448, 1 )
+position = Vector2( 90.1662, 70.0973 )
+scale = Vector2( 12.3099, 2.73243 )
+texture = ExtResource( 3 )
+
+[node name="trunk3" type="Sprite" parent="."]
+modulate = Color( 0.678431, 0.662745, 0.584314, 1 )
+position = Vector2( 496.219, 631.295 )
+scale = Vector2( 2.3767, 2.29609 )
+texture = ExtResource( 4 )
+
+[node name="Player1" parent="." instance=ExtResource( 5 )]
 position = Vector2( 410.453, 192.689 )
 ball_color = Color( 1, 0, 0, 1 )
 
-[node name="Player2" parent="." instance=ExtResource( 3 )]
+[node name="Player2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 595.183, 192.651 )
 ball_color = Color( 0.521569, 0, 1, 1 )
 player_two = true
@@ -52,7 +67,7 @@ limit_bottom = 700
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_drag_margin = true
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 tracking_list = [ NodePath("../Player1"), NodePath("../Player2") ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -63,16 +78,24 @@ position = Vector2( 1037.49, -294.726 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D"]
+visible = false
 position = Vector2( -1262.6, 439.481 )
 scale = Vector2( 0.887738, 0.995317 )
 color = Color( 0.0311279, 0.199219, 0.100728, 1 )
 texture_offset = Vector2( 500, 500 )
 polygon = PoolVector2Array( -100.378, -18.4675, 572.579, -15.3394, 573.115, 19.4479, 573.745, 60.3382, -101.572, 62.9036 )
 
-[node name="forestfloor" type="Sprite" parent="StaticBody2D/CollisionShape2D/Polygon2D"]
-position = Vector2( 236.087, 23.061 )
-scale = Vector2( 1.12646, 1.00471 )
-texture = ExtResource( 5 )
+[node name="forestfloor" type="Sprite" parent="StaticBody2D"]
+position = Vector2( -18.9151, 166.904 )
+scale = Vector2( 2.46556, 2.46557 )
+texture = ExtResource( 7 )
+
+[node name="forestfloorshadow" type="Sprite" parent="StaticBody2D/forestfloor"]
+modulate = Color( 0, 0, 0, 0.396078 )
+show_behind_parent = true
+position = Vector2( 5.17677, 3.57021 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 7 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 0, -0.630249 )
@@ -88,37 +111,51 @@ shape = SubResource( 2 )
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D2"]
 position = Vector2( 86.6604, 17.9933 )
 scale = Vector2( 0.940618, 0.909092 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 polygon = PoolVector2Array( 2.03784, -3.36264, -198.446, -3.36264, -198.429, -37.4898, 2.03784, -37.4558 )
 
 [node name="forstplatform" type="Sprite" parent="StaticBody2D/CollisionShape2D2"]
-position = Vector2( -4.38063, 0.196017 )
-texture = ExtResource( 6 )
+position = Vector2( -3.18898, 0.593234 )
+scale = Vector2( 1.888, 1.904 )
+texture = ExtResource( 9 )
+
+[node name="forstplatformdropshadow2" type="Sprite" parent="StaticBody2D/CollisionShape2D2/forstplatform"]
+modulate = Color( 0, 0, 0, 0.619608 )
+show_behind_parent = true
+position = Vector2( 2.8943, 1.82637 )
+scale = Vector2( 0.96427, 0.980354 )
+texture = ExtResource( 9 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 270, -60 )
 shape = SubResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D3"]
-position = Vector2( 95.6521, 17.0601 )
-scale = Vector2( 0.937628, 0.980395 )
+position = Vector2( 95.6521, 13.6848 )
+scale = Vector2( 0.937628, 0.881979 )
 color = Color( 0.627451, 0.45098, 0, 1 )
 polygon = PoolVector2Array( 6.42834, -1.6514, -192.505, -2.24295, -193.25, -33.5842, 5.60931, -34.2965 )
 
-[node name="forstplatform" type="Sprite" parent="StaticBody2D/CollisionShape2D3/Polygon2D"]
-position = Vector2( -94.9389, -18.2697 )
-scale = Vector2( 1.05799, 1.06678 )
-texture = ExtResource( 6 )
+[node name="forstplatform" type="Sprite" parent="."]
+position = Vector2( 796.534, 258.126 )
+scale = Vector2( 1.77046, 1.86659 )
+texture = ExtResource( 9 )
+
+[node name="forstplatformdropshadow" type="Sprite" parent="forstplatform"]
+modulate = Color( 0, 0, 0, 0.619608 )
+show_behind_parent = true
+position = Vector2( 0.696777, 3.30231 )
+texture = ExtResource( 9 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="BannerControl" parent="CanvasLayer" instance=ExtResource( 10 )]
 margin_left = 200.0
 margin_top = 425.0
 margin_right = 900.0
 margin_bottom = 525.0
 
 [node name="ForestSong" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 11 )
 volume_db = -20.0
 
