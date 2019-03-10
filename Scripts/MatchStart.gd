@@ -1,6 +1,6 @@
 extends Control
 
-var player_move: bool = false
+var player_move: bool = true
 var winner: int = -1
 
 onready var ready = $CanvasLayer/Ready
