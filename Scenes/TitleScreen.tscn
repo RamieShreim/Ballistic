@@ -96,21 +96,20 @@ valign = 1
 [node name="Center Row" type="HBoxContainer" parent="Menu"]
 margin_top = 164.0
 margin_right = 768.0
-margin_bottom = 476.0
+margin_bottom = 465.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/Center Row"]
 margin_right = 768.0
-margin_bottom = 312.0
+margin_bottom = 301.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 15
 alignment = 2
 
 [node name="Play" type="Button" parent="Menu/Center Row/Buttons"]
-margin_top = 11.0
 margin_right = 768.0
-margin_bottom = 75.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 0, 64 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
@@ -125,22 +124,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
-<<<<<<< HEAD
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.941176, 0.941176, 1 )
-=======
-custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
->>>>>>> 1999fe84d0223fa149d487dae46039fcbecaa83d
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Stage Select"
 align = 1
 
 [node name="Instructions" type="Button" parent="Menu/Center Row/Buttons"]
-margin_top = 90.0
+margin_top = 79.0
 margin_right = 768.0
-margin_bottom = 154.0
+margin_bottom = 143.0
 rect_min_size = Vector2( 0, 64 )
 flat = true
 
@@ -149,22 +143,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
-<<<<<<< HEAD
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.941176, 0.941176, 1 )
-=======
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
->>>>>>> 1999fe84d0223fa149d487dae46039fcbecaa83d
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Instructions"
 align = 1
 
 [node name="Credits" type="Button" parent="Menu/Center Row/Buttons"]
-margin_top = 169.0
+margin_top = 158.0
 margin_right = 768.0
-margin_bottom = 233.0
+margin_bottom = 222.0
 rect_min_size = Vector2( 0, 64 )
 flat = true
 
@@ -173,35 +164,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.1579
 margin_bottom = 3.1579
-<<<<<<< HEAD
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.941176, 0.941176, 1 )
-=======
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
->>>>>>> 1999fe84d0223fa149d487dae46039fcbecaa83d
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Credits"
 align = 1
 
 [node name="Quit" type="Button" parent="Menu/Center Row/Buttons"]
-margin_top = 248.0
+margin_top = 237.0
 margin_right = 768.0
-margin_bottom = 312.0
+margin_bottom = 301.0
 rect_min_size = Vector2( 0, 64 )
 flat = true
 
 [node name="Label" type="Label" parent="Menu/Center Row/Buttons/Quit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-<<<<<<< HEAD
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.941176, 0.941176, 1 )
-=======
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
->>>>>>> 1999fe84d0223fa149d487dae46039fcbecaa83d
 custom_colors/font_color_shadow = Color( 0.568627, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Quit Game"
