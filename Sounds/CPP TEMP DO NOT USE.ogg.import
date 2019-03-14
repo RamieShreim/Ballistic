@@ -11,5 +11,5 @@ dest_files=[ "res://.import/CPP TEMP DO NOT USE.ogg-08d34faa555b10b8333429a34019
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

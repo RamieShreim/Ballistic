@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/woodplatform.png-f5d36c0d10f8b095def25a9eb267e952.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

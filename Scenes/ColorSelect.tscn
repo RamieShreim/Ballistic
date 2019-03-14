@@ -1,0 +1,189 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Sprites/dotted bg.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/STAGE SELECT.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/ChangeSceneButton.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/TestStageRedone copy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/PongStage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/ForestStage.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/CPPStage.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Sounds/VO_STAGESELECT.ogg" type="AudioStream" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+bg_color = Color( 0.890196, 0.882353, 0.0431373, 0.462745 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.898039, 0.866667, 0.470588, 1 )
+expand_margin_left = 6.0
+expand_margin_right = 12.0
+expand_margin_top = 11.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+
+[sub_resource type="DynamicFontData" id=6]
+
+font_path = "res://GROBOLD.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+
+size = 50
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 100
+outline_size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[node name="stage selection" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -18.0
+margin_bottom = -18.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 973.0
+margin_bottom = 566.0
+color = Color( 0, 0, 0, 0.466667 )
+
+[node name="dotted bg" type="Sprite" parent="."]
+modulate = Color( 0.0392157, 0.294118, 0.482353, 0.329412 )
+position = Vector2( 201.543, 281.848 )
+scale = Vector2( 1.18907, 1.18907 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="shade" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 495.428, 177.71 )
+scale = Vector2( 1.02787, 1.00451 )
+texture = ExtResource( 2 )
+
+[node name="bl" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.0196078, 0.627451, 0.866667, 1 )
+position = Vector2( 496.336, 168.035 )
+texture = ExtResource( 2 )
+
+[node name="wooshop btn" type="Button" parent="."]
+margin_left = 321.887
+margin_top = 231.642
+margin_right = 633.887
+margin_bottom = 281.642
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
+text = "WOODSHOP"
+script = ExtResource( 3 )
+scene = ExtResource( 4 )
+
+[node name="pong stage btn" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -156.0
+margin_top = 40.0
+margin_right = 156.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
+text = "MAGNAVOX"
+script = ExtResource( 3 )
+scene = ExtResource( 5 )
+
+[node name="forest stage btn" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -156.63
+margin_top = -155.0
+margin_right = 155.37
+margin_bottom = -105.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
+text = "FOREST"
+script = ExtResource( 3 )
+scene = ExtResource( 6 )
+
+[node name="forest stage btn2" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -188.63
+margin_top = -82.1426
+margin_right = 210.37
+margin_bottom = -32.1425
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
+text = "PREPROCESSOR"
+script = ExtResource( 3 )
+scene = ExtResource( 7 )
+
+[node name="stage select" type="Label" parent="."]
+modulate = Color( 0.254902, 0.733333, 0.913725, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -363.488
+margin_top = 65.0
+margin_right = 363.512
+margin_bottom = 268.0
+custom_fonts/font = SubResource( 8 )
+text = "STAGE SELECT
+"
+
+[node name="VO" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+
+[connection signal="pressed" from="wooshop btn" to="wooshop btn" method="pressed"]
+[connection signal="pressed" from="pong stage btn" to="pong stage btn" method="pressed"]
+[connection signal="pressed" from="forest stage btn" to="forest stage btn" method="pressed"]
+[connection signal="pressed" from="forest stage btn2" to="forest stage btn2" method="pressed"]

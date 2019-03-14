@@ -114,7 +114,9 @@ func _physics_process(delta):
 		if stock > 0:
 			$TimerRespawn.start()
 		else:
-			MatchStart.winner = 1 if temp_add == "" else 0
+			if not MatchStart.match_over:
+				MatchStart.winner = 1 if temp_add == "" else 0
+				MatchStart.match_over = true
 			$TimerRestart.start()
 
 

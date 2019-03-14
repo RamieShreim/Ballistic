@@ -10,7 +10,7 @@
 [ext_resource path="res://Sprites/forstplatform.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/forestfloor1Rt.png" type="Texture" id=9]
 [ext_resource path="res://Instances/BannerControl.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Sounds/ForestSong.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/ballistictitle.ogg" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -156,5 +156,6 @@ margin_bottom = 525.0
 
 [node name="ForestSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = -20.0
+volume_db = -3.0
+autoplay = true
 

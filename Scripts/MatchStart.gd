@@ -2,6 +2,7 @@ extends Control
 
 var player_move: bool = true
 var winner: int = -1
+var match_over: bool = false
 
 onready var ready = $CanvasLayer/Ready
 onready var bounce = $CanvasLayer/Bounce
@@ -26,6 +27,7 @@ func play_winsound():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Fade Ready":
 		player_move = true
+		match_over = false
 		prog.hide()
 		bounce.show()
 		$AnimationPlayer.play("Fade Bounce")
