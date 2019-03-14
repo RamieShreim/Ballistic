@@ -124,6 +124,6 @@ margin_bottom = 520.0
 
 [node name="woodshoptheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -8.583
+volume_db = -4.0
 autoplay = true
 

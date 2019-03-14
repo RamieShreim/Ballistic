@@ -156,6 +156,6 @@ margin_bottom = 525.0
 
 [node name="ForestSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = -3.0
+volume_db = 0.5
 autoplay = true
 
