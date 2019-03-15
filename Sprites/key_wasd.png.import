@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/key_wasd.png-3f9cb2f034481e258f4a1fc92fdcf948.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

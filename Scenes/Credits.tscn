@@ -6,19 +6,15 @@
 [ext_resource path="res://GROBOLD.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 100
 outline_size = 8
 outline_color = Color( 0, 0, 0, 1 )
-use_filter = false
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
-
 size = 25
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
-use_filter = false
 font_data = ExtResource( 4 )
 
 [node name="Credits" type="Control"]
@@ -61,9 +57,9 @@ modulate = Color( 0.254902, 0.733333, 0.913725, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -363.488
-margin_top = 45.0
+margin_top = 36.0
 margin_right = 363.512
-margin_bottom = 248.0
+margin_bottom = 239.0
 custom_fonts/font = SubResource( 1 )
 text = "CREDITS"
 align = 1
@@ -72,9 +68,9 @@ align = 1
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -468.0
-margin_top = 152.0
+margin_top = 131.0
 margin_right = 259.0
-margin_bottom = 355.0
+margin_bottom = 404.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_constants/line_spacing = 6
@@ -85,15 +81,16 @@ Duncan Sparks - Programming, Design, Audio
 Sabrina Yang - Design, Music
 Kevin Huang - Music
 Dorian Cromartie - Music
+Anthony Cano - Announcer voice
 Kiara Mendaros - Oversight"
 
 [node name="Credits3" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -468.0
-margin_top = 410.0
+margin_top = 423.0
 margin_right = 259.0
-margin_bottom = 613.0
+margin_bottom = 626.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0.752941, 1, 1 )
 text = "Special Thanks:"
@@ -102,9 +99,9 @@ text = "Special Thanks:"
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -468.0
-margin_top = 442.0
+margin_top = 455.0
 margin_right = 259.0
-margin_bottom = 645.0
+margin_bottom = 658.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_constants/line_spacing = 10

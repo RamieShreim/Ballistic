@@ -12,15 +12,12 @@
 [ext_resource path="res://Sounds/VO_TITLE.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 96
 outline_size = 9
 outline_color = Color( 0.568627, 0.129412, 0.129412, 1 )
-use_filter = false
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-
 bg_color = Color( 0.913725, 0, 0, 0.443137 )
 border_width_left = 3
 border_width_top = 3
@@ -34,30 +31,22 @@ shadow_size = 3
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-
 [sub_resource type="StyleBoxEmpty" id=4]
-
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
-
 [sub_resource type="StyleBoxEmpty" id=6]
 
-
 [sub_resource type="DynamicFont" id=7]
-
 size = 60
 outline_size = 5
 outline_color = Color( 0.568627, 0.129412, 0.129412, 1 )
-use_filter = false
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=8]
-
 size = 60
 outline_size = 5
 outline_color = Color( 0.568627, 0.129412, 0.129412, 1 )
-use_filter = false
 font_data = ExtResource( 4 )
 
 [node name="TitleScreen" type="Control"]
