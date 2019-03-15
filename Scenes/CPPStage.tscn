@@ -12,7 +12,6 @@
 [ext_resource path="res://Sounds/CPP.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
-
 resource_name = "Scroll"
 length = 5.0
 loop = true
@@ -30,21 +29,16 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-
 extents = Vector2( 161, 62 )
 
 [sub_resource type="RectangleShape2D" id=3]
-
 extents = Vector2( 56, 185 )
 
 [sub_resource type="RectangleShape2D" id=4]
-
 extents = Vector2( 71, 71 )
 
 [sub_resource type="DynamicFont" id=5]
-
 size = 32
-use_filter = false
 font_data = ExtResource( 7 )
 
 [node name="Scene" type="Node2D"]
